@@ -98,15 +98,15 @@ public class MomocraftItems {
 /*Les outils et armes selon modele de materiaux d�fini*/
         static EnumToolMaterial enumtoolmaterial1 = EnumToolMaterial.WOOD;
 		//public static final Item ItemAetherSwordSkyroot = (new ItemAetherSwordSkyroot(MomocraftID.idItemAetherSwordSkyroot)).setIconIndex(MomocraftTextures.TexItemAetherSwordSkyroot).setItemName("ItemAetherSwordSkyroot");
-		public static final Item ItemAetherAxeSkyroot = (new ItemAetherAxeSkyroot(MomocraftID.idItemAetherAxeSkyroot, enumtoolmaterial1)).setIconIndex(MomocraftTextures.TexItemAetherAxeSkyroot).setItemName("ItemAetherAxeSkyroot");	
-		public static final Item ItemAetherPickSkyroot = (new ItemAetherPickSkyroot(MomocraftID.idItemAetherPickSkyroot)).setIconIndex(MomocraftTextures.TexItemAetherPickSkyroot).setItemName("ItemAetherPickSkyroot");	
-		public static final Item ItemAetherShovelSkyroot = (new ItemAetherShovelSkyroot(MomocraftID.idItemAetherShovelSkyroot)).setIconIndex(MomocraftTextures.TexItemAetherShovelSkyroot).setItemName("ItemAetherShovelSkyroot");	
+		public static final Item ItemAetherAxeSkyroot = (new ItemAetherAxeSkyroot(MomocraftID.idItemAetherAxeSkyroot, enumtoolmaterial1)).setIconIndex(MomocraftTextures.TexItemAetherAxeSkyroot).setItemName("ItemAetherAxeSkyroot").setFull3D();	
+		public static final Item ItemAetherPickSkyroot = (new ItemAetherPickSkyroot(MomocraftID.idItemAetherPickSkyroot)).setIconIndex(MomocraftTextures.TexItemAetherPickSkyroot).setItemName("ItemAetherPickSkyroot").setFull3D();	
+		public static final Item ItemAetherShovelSkyroot = (new ItemAetherShovelSkyroot(MomocraftID.idItemAetherShovelSkyroot)).setIconIndex(MomocraftTextures.TexItemAetherShovelSkyroot).setItemName("ItemAetherShovelSkyroot").setFull3D();	
 		
         static EnumToolMaterial enumtoolmaterial2 = EnumToolMaterial.STONE;
-		public static final Item ItemAetherSwordHolystone = (new ItemIronBar(MomocraftID.idItemAetherSwordHolystone)).setIconIndex(MomocraftTextures.TexItemAetherSwordHolystone).setItemName("ItemAetherSwordHolystone");	
-		public static final Item ItemAetherAxeHolystone = (new ItemAetherAxeHolystone(MomocraftID.idItemAetherAxeHolystone)).setIconIndex(MomocraftTextures.TexItemAetherAxeHolystone).setItemName("ItemAetherAxeHolystone");	
-		public static final Item ItemAetherPickHolystone = (new ItemAetherPickHolystone(MomocraftID.idItemAetherPickHolystone)).setIconIndex(MomocraftTextures.TexItemAetherPickHolystone).setItemName("ItemAetherPickHolystone");	
-		public static final Item ItemAetherShovelHolystone = (new ItemAetherShovelHolystone(MomocraftID.idItemAetherShovelHolystone)).setIconIndex(MomocraftTextures.TexItemAetherShovelHolystone).setItemName("ItemAetherShovelHolystone");	
+		public static final Item ItemAetherSwordHolystone = (new ItemIronBar(MomocraftID.idItemAetherSwordHolystone)).setIconIndex(MomocraftTextures.TexItemAetherSwordHolystone).setItemName("ItemAetherSwordHolystone").setFull3D();	
+		public static final Item ItemAetherAxeHolystone = (new ItemAetherAxeHolystone(MomocraftID.idItemAetherAxeHolystone)).setIconIndex(MomocraftTextures.TexItemAetherAxeHolystone).setItemName("ItemAetherAxeHolystone").setFull3D();	
+		public static final Item ItemAetherPickHolystone = (new ItemAetherPickHolystone(MomocraftID.idItemAetherPickHolystone)).setIconIndex(MomocraftTextures.TexItemAetherPickHolystone).setItemName("ItemAetherPickHolystone").setFull3D();	
+		public static final Item ItemAetherShovelHolystone = (new ItemAetherShovelHolystone(MomocraftID.idItemAetherShovelHolystone)).setIconIndex(MomocraftTextures.TexItemAetherShovelHolystone).setItemName("ItemAetherShovelHolystone").setFull3D();	
 
         static EnumToolMaterial enumtoolmaterial3 = EnumToolMaterial.IRON;
 		public static final Item ItemAetherSwordZanite = (new ItemIronBar(MomocraftID.idItemAetherSwordZanite)).setIconIndex(MomocraftTextures.TexItemAetherSwordZanite).setItemName("ItemAetherMoaEgg").setFull3D();	
@@ -115,13 +115,13 @@ public class MomocraftItems {
 		public static final Item ItemAetherShovelZanite = (new ItemAetherShovelZanite(MomocraftID.idItemAetherShovelZanite)).setIconIndex(MomocraftTextures.TexItemAetherShovelZanite).setItemName("ItemAetherShovelZanite").setFull3D();	
 
         static EnumToolMaterial enumtoolmaterial4 = EnumToolMaterial.EMERALD;
-		public static final Item ItemAetherSwordGravitite = (new ItemIronBar(MomocraftID.idItemAetherSwordGravitite)).setIconIndex(MomocraftTextures.TexItemAetherSwordGravitite).setItemName("ItemAetherMoaEgg");	
-		public static final Item ItemAetherAxeGravitite = (new ItemIronBar(MomocraftID.idItemAetherAxeGravitite)).setIconIndex(MomocraftTextures.TexItemAetherAxeGravitite).setItemName("ItemAetherAxeGravitite");	
-		public static final Item ItemAetherPickGravitite = (new ItemAetherPickGravitite(MomocraftID.idItemAetherPickGravitite)).setIconIndex(MomocraftTextures.TexItemAetherPickGravitite).setItemName("ItemAetherPickGravitite");	
-		public static final Item ItemAetherShovelGravitite = (new ItemAetherShovelGravitite(MomocraftID.idItemAetherShovelGravitite)).setIconIndex(MomocraftTextures.TexItemAetherShovelGravitite).setItemName("ItemAetherShovelGravitite");
-		public static final Item ItemAetherPickValkyrie = (new ItemIronBar(MomocraftID.idItemAetherPickValkyrie)).setIconIndex(MomocraftTextures.TexItemAetherValkyriePickaxe).setItemName("ItemAetherPickValkyrie");	
-		public static final Item ItemAetherAxeValkyrie = (new ItemIronBar(MomocraftID.idItemAetherAxeValkyrie)).setIconIndex(MomocraftTextures.TexItemAetherValkyrieAxe).setItemName("ItemAetherAxeValkyrie");	
-		public static final Item ItemAetherShovelValkyrie = (new ItemIronBar(MomocraftID.idItemAetherShovelValkyrie)).setIconIndex(MomocraftTextures.TexItemAetherValkyrieShovel).setItemName("ItemAetherShovelValkyrie");	
+		public static final Item ItemAetherSwordGravitite = (new ItemIronBar(MomocraftID.idItemAetherSwordGravitite)).setIconIndex(MomocraftTextures.TexItemAetherSwordGravitite).setItemName("ItemAetherMoaEgg").setFull3D();	
+		public static final Item ItemAetherAxeGravitite = (new ItemIronBar(MomocraftID.idItemAetherAxeGravitite)).setIconIndex(MomocraftTextures.TexItemAetherAxeGravitite).setItemName("ItemAetherAxeGravitite").setFull3D();	
+		public static final Item ItemAetherPickGravitite = (new ItemAetherPickGravitite(MomocraftID.idItemAetherPickGravitite)).setIconIndex(MomocraftTextures.TexItemAetherPickGravitite).setItemName("ItemAetherPickGravitite").setFull3D();	
+		public static final Item ItemAetherShovelGravitite = (new ItemAetherShovelGravitite(MomocraftID.idItemAetherShovelGravitite)).setIconIndex(MomocraftTextures.TexItemAetherShovelGravitite).setItemName("ItemAetherShovelGravitite").setFull3D();
+		public static final Item ItemAetherPickValkyrie = (new ItemIronBar(MomocraftID.idItemAetherPickValkyrie)).setIconIndex(MomocraftTextures.TexItemAetherValkyriePickaxe).setItemName("ItemAetherPickValkyrie").setFull3D();	
+		public static final Item ItemAetherAxeValkyrie = (new ItemIronBar(MomocraftID.idItemAetherAxeValkyrie)).setIconIndex(MomocraftTextures.TexItemAetherValkyrieAxe).setItemName("ItemAetherAxeValkyrie").setFull3D();	
+		public static final Item ItemAetherShovelValkyrie = (new ItemIronBar(MomocraftID.idItemAetherShovelValkyrie)).setIconIndex(MomocraftTextures.TexItemAetherValkyrieShovel).setItemName("ItemAetherShovelValkyrie").setFull3D();	
 		
 /*Les composants*/
 		public static final Item ItemAetherAechorPetal = (new ItemAetherAechorPetal(MomocraftID.idItemAetherAechorPetal)).setIconIndex(MomocraftTextures.TexItemAetherAechorPetal).setItemName("ItemAetherAechorPetal");	
@@ -133,7 +133,7 @@ public class MomocraftItems {
 		public static final Item ItemAetherMoaEgg = (new ItemAetherMoaEgg(MomocraftID.idItemAetherMoaEgg)).setIconIndex(MomocraftTextures.TexItemAetherMoaEgg).setItemName("ItemAetherMoaEgg");	
 		public static final Item ItemAetherBlueMusicDisk = (new ItemAetherBlueMusicDisk(MomocraftID.idItemAetherBlueMusicDisk)).setIconIndex(MomocraftTextures.TexItemAetherBlueMusicDisk).setItemName("ItemAetherBlueMusicDisk");	
 		public static final Item ItemAetherGoldenAmber = (new ItemAetherGoldenAmber(MomocraftID.idItemAetherGoldenAmber)).setIconIndex(MomocraftTextures.TexItemAetherGoldenAmber).setItemName("ItemAetherGoldenAmber");	
-		public static final Item ItemAetherStick = (new ItemAetherStick(MomocraftID.idItemAetherStick)).setIconIndex(MomocraftTextures.TexItemAetherStick).setItemName("ItemAetherStick");	
+		public static final Item ItemAetherStick = (new ItemAetherStick(MomocraftID.idItemAetherStick)).setIconIndex(MomocraftTextures.TexItemAetherStick).setItemName("ItemAetherStick").setFull3D();	
 		public static final Item ItemAetherDart = (new ItemAetherDart(MomocraftID.idItemAetherDart)).setIconIndex(MomocraftTextures.TexItemAetherDartGolden).setItemName("ItemAetherDart");	
 		public static final Item ItemAetherDartShooter = (new ItemAetherDartShooter(MomocraftID.idItemAetherDartShooter)).setIconIndex(MomocraftTextures.TexItemAetherDartShooter).setItemName("ItemAetherDartShooter");	
 		public static final Item ItemAetherAmbrosiumShard = (new ItemAetherAmbrosiumShard(MomocraftID.idItemAetherAmbrosiumShard)).setIconIndex(MomocraftTextures.TexItemAetherAmbrosiumShard).setItemName("ItemAetherAmbrosiumShard");	
@@ -144,21 +144,21 @@ public class MomocraftItems {
 		
 		public static final Item ItemAetherIronBubble = (new ItemIronBar(MomocraftID.idItemAetherIronBubble)).setIconIndex(MomocraftTextures.TexItemAetherIronBubble).setItemName("ItemAetherMoaEgg");	
 		public static final Item ItemAetherPigSlayer = (new ItemIronBar(MomocraftID.idItemAetherPigSlayer)).setIconIndex(MomocraftTextures.TexItemAetherPigSlayer).setItemName("ItemAetherPigSlayer");	
-		public static final Item ItemAetherVampireBlade = (new ItemIronBar(MomocraftID.idItemAetherVampireBlade)).setIconIndex(MomocraftTextures.TexItemAetherVampireBlade).setItemName("ItemAetherVampireBlade");	
+		public static final Item ItemAetherVampireBlade = (new ItemIronBar(MomocraftID.idItemAetherVampireBlade)).setIconIndex(MomocraftTextures.TexItemAetherVampireBlade).setItemName("ItemAetherVampireBlade").setFull3D();	
 		public static final Item ItemAetherNatureStaff = (new ItemIronBar(MomocraftID.idItemAetherNatureStaff)).setIconIndex(MomocraftTextures.TexItemAetherNatureStaff).setItemName("ItemAetherNatureStaff");	
-		public static final Item ItemAetherSwordFire = (new ItemIronBar(MomocraftID.idItemAetherSwordFire)).setIconIndex(MomocraftTextures.TexItemAetherElementalSword).setItemName("ItemAetherSwordFire");	
-		public static final Item ItemAetherSwordHoly = (new ItemIronBar(MomocraftID.idItemAetherSwordHoly)).setIconIndex(MomocraftTextures.TexItemAetherElementalSword).setItemName("ItemAetherSwordHoly");	
-		public static final Item ItemAetherSwordLightning = (new ItemIronBar(MomocraftID.idItemAetherSwordLightning)).setIconIndex(MomocraftTextures.TexItemAetherElementalSword).setItemName("ItemAetherSwordLightning");	
-		public static final Item ItemAetherLightningKnife = (new ItemIronBar(MomocraftID.idItemAetherLightningKnife)).setIconIndex(MomocraftTextures.TexItemAetherLightningKnife).setItemName("ItemAetherLightningKnife");	
+		public static final Item ItemAetherSwordFire = (new ItemIronBar(MomocraftID.idItemAetherSwordFire)).setIconIndex(MomocraftTextures.TexItemAetherElementalSword).setItemName("ItemAetherSwordFire").setFull3D();	
+		public static final Item ItemAetherSwordHoly = (new ItemIronBar(MomocraftID.idItemAetherSwordHoly)).setIconIndex(MomocraftTextures.TexItemAetherElementalSword).setItemName("ItemAetherSwordHoly").setFull3D();	
+		public static final Item ItemAetherSwordLightning = (new ItemIronBar(MomocraftID.idItemAetherSwordLightning)).setIconIndex(MomocraftTextures.TexItemAetherElementalSword).setItemName("ItemAetherSwordLightning").setFull3D();	
+		public static final Item ItemAetherLightningKnife = (new ItemIronBar(MomocraftID.idItemAetherLightningKnife)).setIconIndex(MomocraftTextures.TexItemAetherLightningKnife).setItemName("ItemAetherLightningKnife").setFull3D();	
 		public static final Item ItemAetherGummieSwet = (new ItemIronBar(MomocraftID.idItemAetherGummieSwet)).setIconIndex(MomocraftTextures.TexItemAetherGummieSwet).setItemName("ItemAetherGummieSwet");	
-		public static final Item ItemAetherHammerNotch = (new ItemIronBar(MomocraftID.idItemAetherHammerNotch)).setIconIndex(MomocraftTextures.TexItemAetherHammerNotch).setItemName("ItemAetherHammerNotch");	
+		public static final Item ItemAetherHammerNotch = (new ItemIronBar(MomocraftID.idItemAetherHammerNotch)).setIconIndex(MomocraftTextures.TexItemAetherHammerNotch).setItemName("ItemAetherHammerNotch").setFull3D();	
 		public static final Item ItemAetherPhoenixBow = (new ItemIronBar(MomocraftID.idItemAetherPhoenixBow)).setIconIndex(MomocraftTextures.TexItemAetherPhoenixBow).setItemName("ItemAetherPhoenixBow");	
 		public static final Item ItemAetherCloudParachute = (new ItemIronBar(MomocraftID.idItemAetherCloudParachute)).setIconIndex(MomocraftTextures.TexItemAetherCloudParachute).setItemName("ItemAetherCloudParachute");	
 		public static final Item ItemAetherCloudParachuteGold = (new ItemIronBar(MomocraftID.idItemAetherCloudParachuteGold)).setIconIndex(MomocraftTextures.TexItemAetherCloudParachute).setItemName("ItemAetherCloudParachuteGold");	
 		public static final Item ItemAetherCloudStaff = (new ItemIronBar(MomocraftID.idItemAetherCloudStaff)).setIconIndex(MomocraftTextures.TexItemAetherCloudStaff).setItemName("ItemAetherCloudStaff");	
 		public static final Item ItemAetherLifeShard = (new ItemIronBar(MomocraftID.idItemAetherLifeShard)).setIconIndex(MomocraftTextures.TexItemAetherLifeShard).setItemName("ItemAetherMoaEgg");	
 		public static final Item ItemAetherGoldenFeather = (new ItemIronBar(MomocraftID.idItemAetherGoldenFeather)).setIconIndex(MomocraftTextures.TexItemAetherGoldenFeather).setItemName("ItemAetherGoldenFeather");	
-		public static final Item ItemAetherLance = (new ItemIronBar(MomocraftID.idItemAetherLance)).setIconIndex(MomocraftTextures.TexItemAetherLance).setItemName("ItemAetherLance");	
+		public static final Item ItemAetherLance = (new ItemIronBar(MomocraftID.idItemAetherLance)).setIconIndex(MomocraftTextures.TexItemAetherLance).setItemName("ItemAetherLance").setFull3D();	
 		public static final Item ItemAetherIronRing = (new ItemIronBar(MomocraftID.idItemAetherIronRing)).setIconIndex(MomocraftTextures.TexItemMomocraftTest).setItemName("ItemAetherIronRing");	
 		public static final Item ItemAetherGoldRing = (new ItemIronBar(MomocraftID.idItemAetherGoldRing)).setIconIndex(MomocraftTextures.TexItemMomocraftTest).setItemName("ItemAetherMoaEgg");	
 		public static final Item ItemAetherZaniteRing = (new ItemIronBar(MomocraftID.idItemAetherZaniteRing)).setIconIndex(MomocraftTextures.TexItemMomocraftTest).setItemName("ItemAetherZaniteRing");	

@@ -56,9 +56,9 @@ public class MomocraftItems {
 		//Armure en zanite
 		public static int zaniteArmour = ModLoader.AddArmor("Zanite");
 		public static final Item ItemAetherZaniteHelmet = (new ItemColouredArmor(MomocraftID.idItemAetherZaniteHelmet,EnumArmorMaterial.IRON,zaniteArmour,0, MomocraftCouleur.Zanite)).setIconIndex(2).setItemName("ItemAetherZaniteHelmet");	
-		public static final Item ItemAetherZaniteChestplate = (new ItemColouredArmor(MomocraftID.idItemAetherZaniteChestplate,EnumArmorMaterial.IRON,zaniteArmour,0, MomocraftCouleur.Zanite)).setIconIndex(18).setItemName("ItemAetherZaniteChestplate");	
-		public static final Item ItemAetherZaniteLeggings = (new ItemColouredArmor(MomocraftID.idItemAetherZaniteLeggings,EnumArmorMaterial.IRON,zaniteArmour,0, MomocraftCouleur.Zanite)).setIconIndex(34).setItemName("ItemAetherZaniteLeggings");	
-		public static final Item ItemAetherZaniteBoots = (new ItemColouredArmor(MomocraftID.idItemAetherZaniteBoots,EnumArmorMaterial.IRON,zaniteArmour,0, MomocraftCouleur.Zanite)).setIconIndex(50).setItemName("ItemAetherZaniteBoots");	
+		public static final Item ItemAetherZaniteChestplate = (new ItemColouredArmor(MomocraftID.idItemAetherZaniteChestplate,EnumArmorMaterial.IRON,zaniteArmour,1, MomocraftCouleur.Zanite)).setIconIndex(18).setItemName("ItemAetherZaniteChestplate");	
+		public static final Item ItemAetherZaniteLeggings = (new ItemColouredArmor(MomocraftID.idItemAetherZaniteLeggings,EnumArmorMaterial.IRON,zaniteArmour,2, MomocraftCouleur.Zanite)).setIconIndex(34).setItemName("ItemAetherZaniteLeggings");	
+		public static final Item ItemAetherZaniteBoots = (new ItemColouredArmor(MomocraftID.idItemAetherZaniteBoots,EnumArmorMaterial.IRON,zaniteArmour,3, MomocraftCouleur.Zanite)).setIconIndex(50).setItemName("ItemAetherZaniteBoots");	
 		
 		//Armure en gravitite
 		public static int gravititeArmour = ModLoader.AddArmor("Gravitite");
@@ -93,7 +93,7 @@ public class MomocraftItems {
 		
 /*Les accessoires*/
 		
-/*Les outils et armes selon modele de materiaux défini*/
+/*Les outils et armes selon modele de materiaux dï¿½fini*/
         static EnumToolMaterial enumtoolmaterial1 = EnumToolMaterial.WOOD;
 		//public static final Item ItemAetherSwordSkyroot = (new ItemAetherSwordSkyroot(MomocraftID.idItemAetherSwordSkyroot)).setIconIndex(MomocraftTextures.TexItemAetherSwordSkyroot).setItemName("ItemAetherSwordSkyroot");
 		public static final Item ItemAetherAxeSkyroot = (new ItemAetherAxeSkyroot(MomocraftID.idItemAetherAxeSkyroot, enumtoolmaterial1)).setIconIndex(MomocraftTextures.TexItemAetherAxeSkyroot).setItemName("ItemAetherAxeSkyroot");	

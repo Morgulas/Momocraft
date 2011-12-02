@@ -63,30 +63,30 @@ public class MomocraftItems {
 		//Armure en gravitite
 		public static int gravititeArmour = ModLoader.AddArmor("Gravitite");
 		public static final Item ItemAetherGravititeHelmet = (new ItemColouredArmor(MomocraftID.idItemAetherGravititeHelmet,EnumArmorMaterial.DIAMOND,gravititeArmour,0, MomocraftCouleur.Gravitite)).setIconIndex(2).setItemName("ItemAetherGravititeHelmet");	
-		public static final Item ItemAetherGravititeBodyplate = (new ItemColouredArmor(MomocraftID.idItemAetherGravititeBodyplate,EnumArmorMaterial.DIAMOND,gravititeArmour,0, MomocraftCouleur.Gravitite)).setIconIndex(18).setItemName("ItemAetherGravititeBodyplate");	
-		public static final Item ItemAetherGravititePlatelegs = (new ItemColouredArmor(MomocraftID.idItemAetherGravititePlatelegs,EnumArmorMaterial.DIAMOND,gravititeArmour,0, MomocraftCouleur.Gravitite)).setIconIndex(34).setItemName("ItemAetherGravititePlatelegs");	
-		public static final Item ItemAetherGravititeBoots = (new ItemColouredArmor(MomocraftID.idItemAetherGravititeBoots,EnumArmorMaterial.DIAMOND,gravititeArmour,0, MomocraftCouleur.Gravitite)).setIconIndex(50).setItemName("ItemAetherGravititeBoots");	
+		public static final Item ItemAetherGravititeBodyplate = (new ItemColouredArmor(MomocraftID.idItemAetherGravititeBodyplate,EnumArmorMaterial.DIAMOND,gravititeArmour,1, MomocraftCouleur.Gravitite)).setIconIndex(18).setItemName("ItemAetherGravititeBodyplate");	
+		public static final Item ItemAetherGravititePlatelegs = (new ItemColouredArmor(MomocraftID.idItemAetherGravititePlatelegs,EnumArmorMaterial.DIAMOND,gravititeArmour,2, MomocraftCouleur.Gravitite)).setIconIndex(34).setItemName("ItemAetherGravititePlatelegs");	
+		public static final Item ItemAetherGravititeBoots = (new ItemColouredArmor(MomocraftID.idItemAetherGravititeBoots,EnumArmorMaterial.DIAMOND,gravititeArmour,3, MomocraftCouleur.Gravitite)).setIconIndex(50).setItemName("ItemAetherGravititeBoots");	
 		
 		//Armure du Phoenix
 		public static int phoenixArmour = ModLoader.AddArmor("Phoenix");
 		public static final Item ItemAetherPhoenixHelm = (new ItemColouredArmor(MomocraftID.idItemAetherPhoenixHelm,EnumArmorMaterial.DIAMOND,phoenixArmour,0, MomocraftCouleur.Phoenix)).setIconIndex(1).setItemName("ItemAetherPhoenixHelm");	
-		public static final Item ItemAetherPhoenixBody = (new ItemColouredArmor(MomocraftID.idItemAetherPhoenixBody,EnumArmorMaterial.DIAMOND,phoenixArmour,0, MomocraftCouleur.Phoenix)).setIconIndex(17).setItemName("ItemAetherPhoenixBody");	
-		public static final Item ItemAetherPhoenixLegs = (new ItemColouredArmor(MomocraftID.idItemAetherPhoenixLegs,EnumArmorMaterial.DIAMOND,phoenixArmour,0, MomocraftCouleur.Phoenix)).setIconIndex(33).setItemName("ItemAetherPhoenixLegs");	
-		public static final Item ItemAetherPhoenixBoots = (new ItemColouredArmor(MomocraftID.idItemAetherPhoenixBoots,EnumArmorMaterial.DIAMOND,phoenixArmour,0, MomocraftCouleur.Phoenix)).setIconIndex(49).setItemName("ItemAetherPhoenixBoots");
+		public static final Item ItemAetherPhoenixBody = (new ItemColouredArmor(MomocraftID.idItemAetherPhoenixBody,EnumArmorMaterial.DIAMOND,phoenixArmour,1, MomocraftCouleur.Phoenix)).setIconIndex(17).setItemName("ItemAetherPhoenixBody");	
+		public static final Item ItemAetherPhoenixLegs = (new ItemColouredArmor(MomocraftID.idItemAetherPhoenixLegs,EnumArmorMaterial.DIAMOND,phoenixArmour,2, MomocraftCouleur.Phoenix)).setIconIndex(33).setItemName("ItemAetherPhoenixLegs");	
+		public static final Item ItemAetherPhoenixBoots = (new ItemColouredArmor(MomocraftID.idItemAetherPhoenixBoots,EnumArmorMaterial.DIAMOND,phoenixArmour,3, MomocraftCouleur.Phoenix)).setIconIndex(49).setItemName("ItemAetherPhoenixBoots");
 		
 		//Armure d'obsidienne
 		public static int obsiArmour = ModLoader.AddArmor("obsi");
 		public static final Item ItemAetherObsidianHelm = (new ItemCasqueObsi(MomocraftID.idItemAetherObsidianHelm,EnumArmorMaterial.GOLD,obsiArmour,0)).setIconIndex(ModLoader.addOverride("/gui/items.png", "/momocraft/minefield/items/casqueobsi.png")).setItemName("ItemAetherObsidianHelm");	
-		public static final Item ItemAetherObsidianBody = (new ItemArmureObsi(MomocraftID.idItemAetherObsidianBody,EnumArmorMaterial.GOLD,obsiArmour,0)).setIconIndex(ModLoader.addOverride("/gui/items.png", "/momocraft/minefield/items/armureobsi.png")).setItemName("ItemAetherObsidianBody");	
-		public static final Item ItemAetherObsidianLegs = (new ItemJambeObsi(MomocraftID.idItemAetherObsidianLegs,EnumArmorMaterial.GOLD,obsiArmour,0)).setIconIndex(ModLoader.addOverride("/gui/items.png", "/momocraft/minefield/items/jambeobsi.png")).setItemName("ItemAetherObsidianLegs");	
-		public static final Item ItemAetherObsidianBoots = (new ItemPiedObsi(MomocraftID.idItemAetherObsidianBoots,EnumArmorMaterial.GOLD,obsiArmour,0)).setIconIndex(ModLoader.addOverride("/gui/items.png", "/momocraft/minefield/items/piedobsi.png")).setItemName("ItemAetherObsidianBoots");
+		public static final Item ItemAetherObsidianBody = (new ItemArmureObsi(MomocraftID.idItemAetherObsidianBody,EnumArmorMaterial.GOLD,obsiArmour,1)).setIconIndex(ModLoader.addOverride("/gui/items.png", "/momocraft/minefield/items/armureobsi.png")).setItemName("ItemAetherObsidianBody");	
+		public static final Item ItemAetherObsidianLegs = (new ItemJambeObsi(MomocraftID.idItemAetherObsidianLegs,EnumArmorMaterial.GOLD,obsiArmour,2)).setIconIndex(ModLoader.addOverride("/gui/items.png", "/momocraft/minefield/items/jambeobsi.png")).setItemName("ItemAetherObsidianLegs");	
+		public static final Item ItemAetherObsidianBoots = (new ItemPiedObsi(MomocraftID.idItemAetherObsidianBoots,EnumArmorMaterial.GOLD,obsiArmour,3)).setIconIndex(ModLoader.addOverride("/gui/items.png", "/momocraft/minefield/items/piedobsi.png")).setItemName("ItemAetherObsidianBoots");
 		
 		//Armure de Neptune
 		public static int neptuneArmour = ModLoader.AddArmor("Neptune");
 		public static final Item ItemAetherNeptuneHelmet = (new ItemColouredArmor(MomocraftID.idItemAetherNeptuneHelmet,EnumArmorMaterial.DIAMOND,neptuneArmour,0, MomocraftCouleur.Neptune)).setIconIndex(1).setItemName("ItemAetherNeptuneHelmet");	
-		public static final Item ItemAetherNeptuneChestplate = (new ItemColouredArmor(MomocraftID.idItemAetherNeptuneChestplate,EnumArmorMaterial.DIAMOND,neptuneArmour,0, MomocraftCouleur.Neptune)).setIconIndex(17).setItemName("ItemAetherNeptuneChestplate");	
-		public static final Item ItemAetherNeptuneLeggings = (new ItemColouredArmor(MomocraftID.idItemAetherNeptuneLeggings,EnumArmorMaterial.DIAMOND,neptuneArmour,0, MomocraftCouleur.Neptune)).setIconIndex(33).setItemName("ItemAetherNeptuneLeggings");	
-		public static final Item ItemAetherNeptuneBoots = (new ItemColouredArmor(MomocraftID.idItemAetherNeptuneBoots,EnumArmorMaterial.DIAMOND,neptuneArmour,0, MomocraftCouleur.Neptune)).setIconIndex(49).setItemName("ItemAetherNeptuneBoots");	
+		public static final Item ItemAetherNeptuneChestplate = (new ItemColouredArmor(MomocraftID.idItemAetherNeptuneChestplate,EnumArmorMaterial.DIAMOND,neptuneArmour,1, MomocraftCouleur.Neptune)).setIconIndex(17).setItemName("ItemAetherNeptuneChestplate");	
+		public static final Item ItemAetherNeptuneLeggings = (new ItemColouredArmor(MomocraftID.idItemAetherNeptuneLeggings,EnumArmorMaterial.DIAMOND,neptuneArmour,2, MomocraftCouleur.Neptune)).setIconIndex(33).setItemName("ItemAetherNeptuneLeggings");	
+		public static final Item ItemAetherNeptuneBoots = (new ItemColouredArmor(MomocraftID.idItemAetherNeptuneBoots,EnumArmorMaterial.DIAMOND,neptuneArmour,3, MomocraftCouleur.Neptune)).setIconIndex(49).setItemName("ItemAetherNeptuneBoots");	
 		
 		
 

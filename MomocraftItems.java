@@ -28,7 +28,7 @@ public class MomocraftItems {
 //-------------------------------------------		
 		
 		public static final Item ObsiSword = (new ItemObsiSword(MomocraftID.idItemMomocraftTest)).setItemName("ObsiSword").setMaxStackSize(16).setFull3D().setIconIndex(MomocraftTextures.TexItemMomocraftTest);		
-		public static final Item Chope = (new ItemChope(MomocraftID.idItemMomocraftTest)).setItemName("Chope").setMaxStackSize(16).setFull3D().setIconIndex(MomocraftTextures.TexItemMomocraftTest);
+		public static final Item Chope = (new ItemChope(MomocraftID.idItemMomocraftTest)).setItemName("Chope").setMaxStackSize(16).setIconIndex(MomocraftTextures.TexItemMomocraftTest);
 		public static final Item IronBar = (new ItemIronBar(MomocraftID.idItemMomocraftTest)).setItemName("IronBar").setMaxStackSize(16).setFull3D().setIconIndex(MomocraftTextures.TexItemMomocraftTest);	
 		public static final Item CasqueObsi = (new ItemCasqueObsi (MomocraftID.idItemMomocraftTest, EnumArmorMaterial.DIAMOND, ModLoader.AddArmor("obsi"), 0)).setItemName("CasqueObsi").setMaxStackSize(1).setFull3D().setIconIndex(MomocraftTextures.TexItemMomocraftTest);	
 		public static final Item ArmureObsi = (new ItemArmureObsi (MomocraftID.idItemMomocraftTest, EnumArmorMaterial.DIAMOND, ModLoader.AddArmor("obsi"), 1)).setItemName("ArmureObsi").setMaxStackSize(16).setFull3D().setIconIndex(MomocraftTextures.TexItemMomocraftTest);	

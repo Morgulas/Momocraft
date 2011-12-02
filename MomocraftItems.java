@@ -13,7 +13,9 @@ public class MomocraftItems {
 //-------------------------------------------
 // Momocraft
 //-------------------------------------------	
-	
+
+// SALUT C'EST MOI ! KONJIN !
+
 		//TestItem
 		public static final Item TestItem = (new ItemTestItem(MomocraftID.idItemMomocraftTest /*Id du block*/))
 				.setItemName("TestItem")								//Redefinir le nom de l'item de la variable

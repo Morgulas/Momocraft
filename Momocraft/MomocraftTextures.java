@@ -120,7 +120,7 @@ public class MomocraftTextures {
 	public static final int TexBlockAetherGoldenOak = ModLoader.addOverride("/terrain.png", "/momocraft/aether/blocks/GoldenOak.png");
 	public static final int TexBlockAetherGoldenOakLeaves = ModLoader.addOverride("/terrain.png", "/momocraft/aether/blocks/GoldenOakLeaves.png");
 	public static final int TexBlockAetherGoldenOakSapling = ModLoader.addOverride("/terrain.png", "/momocraft/aether/blocks/GoldenOakSapling.png");
-	public static final int TexBlockAetherGrassDirt = ModLoader.addOverride("/terrain.png", "/momocraft/aether/blocks/GrassDirt.png");
+//	public static final int TexBlockAetherGrassDirt = ModLoader.addOverride("/terrain.png", "/momocraft/aether/blocks/GrassDirt.png");
 	public static final int TexBlockAetherGrassSide = ModLoader.addOverride("/terrain.png", "/momocraft/aether/blocks/GrassSide.png");
 	public static final int TexBlockAetherGrassTop = ModLoader.addOverride("/terrain.png", "/momocraft/aether/blocks/GrassTop.png");
 	public static final int TexBlockAetherGravititeOre = ModLoader.addOverride("/terrain.png", "/momocraft/aether/blocks/GravititeOre.png");

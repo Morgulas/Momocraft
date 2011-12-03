@@ -1,6 +1,8 @@
 package net.minecraft.src;
 
+import net.minecraft.src.Momocraft.BiomeGenAether;
 import net.minecraft.src.Momocraft.BlockTestBlock;
+import net.minecraft.src.Momocraft.DimensionAether;
 import net.minecraft.src.Momocraft.ItemArmureObsi;
 import net.minecraft.src.Momocraft.ItemCasqueObsi;
 import net.minecraft.src.Momocraft.ItemChope;
@@ -15,18 +17,50 @@ import net.minecraft.src.Momocraft.MomocraftMobs;
 import net.minecraft.src.Momocraft.MomocraftRecettes;
 import net.minecraft.src.Momocraft.MomocraftTextures;
 import net.minecraft.src.MomocraftBlocks;
+import java.util.*;
 
 //Class du mode qui hérite de BaseMod
 public class mod_Momocraft extends BaseMod{
-
+	
+	//Déclaration de variable systèmes
+		private boolean cloudPara;
+		private Random rand;
+		private float zLevel;
+		DimensionAether dim;
+	    private KeyBinding key_loreGain;
+	    
 	//Constructeur
 	public mod_Momocraft() {
 		
+
+		//Appel de generation de l'Aether
+	        cloudPara = false;
+	        rand = new Random();
+	        zLevel = -90F;
+	        key_loreGain = new KeyBinding("key.loreGain", 48);
+	        dim = new DimensionAether();
+	        dim.name = "Aether";
+	        
+	        BiomeGenAether biomegenaether = new BiomeGenAether();
+	        try{
+	            ModLoader.setPrivateValue(net.minecraft.src.BiomeGenBase.class, biomegenaether, "w", Boolean.valueOf(false));
+	        }
+	        catch(Exception exception){
+	            System.out.println("Forgot to update reflection. Trying MCP name for disabling rain.");
+	            try{
+	                ModLoader.setPrivateValue(net.minecraft.src.BiomeGenBase.class, biomegenaether, "enableRain", Boolean.valueOf(false));
+	            }
+	            catch(Exception exception1) { }
+	        }
+        
+        
+        
+        //Appel des fonctions
 		new MomocraftBlocks();
 		new MomocraftItems();
 		new MomocraftMobs();
-		new MomocraftRecettes();		//Appel de la fonction MomocraftRecettes()
-		new MomocraftTextures();		//Appel de la fonction MomocraftTextures()
+		new MomocraftRecettes();		
+		new MomocraftTextures();
 		
 
 //-------------------------------------------
@@ -162,7 +196,7 @@ public class mod_Momocraft extends BaseMod{
 		ModLoader.AddName(MomocraftItems.ItemAetherAxeHolystone,"Hache en Holystone");	
 		ModLoader.AddName(MomocraftItems.ItemAetherAxeZanite,"Hache en Zanite");	
 		ModLoader.AddName(MomocraftItems.ItemAetherAxeGravitite,"Hache en Gravitite");	
-		//ModLoader.AddName(MomocraftItems.ItemAetherSwordSkyroot,"Epée en Skyroot");	
+		ModLoader.AddName(MomocraftItems.ItemAetherSwordSkyroot,"Epée en Skyroot");	
 		ModLoader.AddName(MomocraftItems.ItemAetherSwordHolystone,"Epée en Holystone");	
 		ModLoader.AddName(MomocraftItems.ItemAetherSwordZanite,"Epée en Zanite");	
 		ModLoader.AddName(MomocraftItems.ItemAetherSwordGravitite,"Epée en Gravitite");	
@@ -235,8 +269,49 @@ public class mod_Momocraft extends BaseMod{
 		ModLoader.AddName(MomocraftItems.ItemAetherIcePendant,"Pendentif de glace");	
 /**/	
 	
+		
+		
+
+		
+
 //-----------------------------------------------------------------------	
-	}
+	}		
+	//Chargeur des Achievements
+	
+    public static void giveAchievement(Achievement achievement)
+    {
+        giveAchievement(achievement, ((EntityPlayer) (ModLoader.getMinecraftInstance().thePlayer)));
+    }
+
+    public static void giveAchievement(Achievement achievement, EntityPlayer entityplayer)
+    {
+        if(ModLoader.getMinecraftInstance().statFileWriter.hasAchievementUnlocked(achievement))
+        {
+            return;
+        } else
+        {
+            ModLoader.getMinecraftInstance().sndManager.playSoundFX("aether.sound.other.achievement.achievementGen", 1.0F, 1.0F);
+            entityplayer.triggerAchievement(achievement);
+            return;
+        }
+    }
+	
+	//Fonctions exotiques
+	
+	public static boolean equippedSkyrootShovel(){
+		ItemStack itemstack = ModLoader.getMinecraftInstance().thePlayer.inventory.getCurrentItem();
+		return itemstack != null && itemstack.itemID == MomocraftItems.ItemAetherShovelSkyroot.shiftedIndex;
+		}
+			
+	public static boolean equippedSkyrootAxe(){
+		ItemStack itemstack = ModLoader.getMinecraftInstance().thePlayer.inventory.getCurrentItem();
+		return itemstack != null && itemstack.itemID == MomocraftItems.ItemAetherAxeSkyroot.shiftedIndex;
+		}	
+	
+    public static boolean equippedSkyrootPick(){
+        ItemStack itemstack = ModLoader.getMinecraftInstance().thePlayer.inventory.getCurrentItem();
+        return itemstack != null && itemstack.itemID == MomocraftItems.ItemAetherPickSkyroot.shiftedIndex;
+    	}		
 	
 	@Override
 	public String getVersion() {

@@ -8,6 +8,7 @@ public class MomocraftID {
 	
 	/*Les Blocs*/
 	public static int idBlockMomocraftTest = 202;
+//	public static int idBlockMomocraftPortal = 240;
 	
 	/*Les Items*/
 	public static int idItemMomocraftTest = 201;

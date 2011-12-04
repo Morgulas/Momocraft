@@ -1,12 +1,6 @@
 package net.minecraft.src.Momocraft;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.ModLoader;
-import net.minecraft.src.MomocraftBlocks;
-import net.minecraft.src.MomocraftItems;
-import net.minecraft.src.mod_Momocraft;
+import net.minecraft.src.*;
 
 public class MomocraftRecettes {
 	
@@ -16,26 +10,32 @@ public class MomocraftRecettes {
 //-----------------------------------------------------
 	/*Bloc de test*/	
 	ModLoader.AddRecipe(new ItemStack(MomocraftBlocks.TestBlock, 1), new Object[]{ 	//Reslutat de la recette en terme de stack
-		"#II", " I ", " II", 														//Matrice de creation dans l'établi. Le premiere ligne represente la ligne du haut dans l'établi
+		"I", 																		//Matrice de creation dans l'établi. Le premiere ligne represente la ligne du haut dans l'établi
 		Character.valueOf('#'), Block.cobblestone, 									//Attribution du caractère # a sa correspondance
 		Character.valueOf('I'), Item.stick											//Attribution du caractère I a sa correspondance
 	});
 	
-	/*Item de test*/
-	ModLoader.AddRecipe(new ItemStack(MomocraftItems.TestItem, 1), new Object[]{ 	//Reslutat de la recette en terme de stack
+	/*Item de test
+	ModLoader.AddRecipe(new ItemStack(TFBlocks.portal, 1), new Object[]{ 	//Reslutat de la recette en terme de stack
 		"III", " I ", " I ", 														//Matrice de creation dans l'établi. Le premiere ligne represente la ligne du haut dans l'établi
 		Character.valueOf('I'), Block.mycelium	
-	});
+	});*/
 	
 //-----------------------------------------------------
 // Recettes des blocs
 //-----------------------------------------------------	
 	
-	/*Bloc de paille*/
-	ModLoader.AddRecipe(new ItemStack(MomocraftBlocks.BlockPaille, 1), new Object[]{ 
-		"###", "###", "###", 											
-		Character.valueOf('#'), Item.wheat 								
+	/*Bloc de paille
+	ModLoader.AddRecipe(new ItemStack(MomocraftBlocks.BlockAetherPortal, 1), new Object[]{ 
+		"#",											
+		Character.valueOf('#'), Block.dirt							
 	});
+	*/
+	ModLoader.AddRecipe(new ItemStack(MomocraftBlocks.BlockAetherGravititeOre, 1), new Object[]{ 
+		"#",											
+		Character.valueOf('#'), Block.dirt							
+	});
+	
 	
 //-----------------------------------------------------
 // Recettes des items

@@ -1,12 +1,21 @@
+// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) braces deadcode fieldsfirst 
+
 package net.minecraft.src.Momocraft;
 
-import java.util.*;
+import java.util.Random;
 
 import net.minecraft.src.*;
 
-public class BlockFloating extends Block{
-	
-	public BlockFloating(int i, int j, boolean flag)
+// Referenced classes of package net.minecraft.src:
+//            Block, Material, World, EntityFallingSand, 
+//            BlockFire
+
+public class BlockFloating extends Block
+{
+
+    public BlockFloating(int i, int j, boolean flag)
     {
         super(i, j, Material.rock);
         enchanted = flag;
@@ -82,6 +91,4 @@ public class BlockFloating extends Block{
 
     public static boolean fallInstantly = false;
     private boolean enchanted;
-
-
 }

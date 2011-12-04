@@ -1,25 +1,34 @@
+// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) braces deadcode fieldsfirst 
+
 package net.minecraft.src.Momocraft;
-
-
-import java.util.List;
 
 import net.minecraft.src.*;
 
-public class EntityFloatingBlock extends Entity{
-	
-	public EntityFloatingBlock(World world)
+
+// Referenced classes of package net.minecraft.src:
+//            Entity, MathHelper, World, Block, 
+//            BlockPistonMoving, BlockSand, NBTTagCompound
+
+public class EntityFloatingBlock extends Entity
+{
+
+    public int blockID;
+    public int fallTime;
+
+    public EntityFloatingBlock(World world)
     {
         super(world);
-        flytime = 0;
+        fallTime = 0;
     }
 
     public EntityFloatingBlock(World world, double d, double d1, double d2, 
-            int i, int j)
+            int i)
     {
         super(world);
-        flytime = 0;
+        fallTime = 0;
         blockID = i;
-        metadata = j;
         preventEntitySpawning = true;
         setSize(0.98F, 0.98F);
         yOffset = height / 2.0F;
@@ -30,12 +39,6 @@ public class EntityFloatingBlock extends Entity{
         prevPosX = d;
         prevPosY = d1;
         prevPosZ = d2;
-    }
-
-    public EntityFloatingBlock(World world, double d, double d1, double d2, 
-            int i)
-    {
-        this(world, d, d1, d2, i, 0);
     }
 
     protected boolean canTriggerWalking()
@@ -62,8 +65,8 @@ public class EntityFloatingBlock extends Entity{
         prevPosX = posX;
         prevPosY = posY;
         prevPosZ = posZ;
-        flytime++;
-        motionY += 0.040000000000000001D;
+        fallTime++;
+        motionY += 0.039999999105930328D;
         moveEntity(motionX, motionY, motionZ);
         motionX *= 0.98000001907348633D;
         motionY *= 0.98000001907348633D;
@@ -71,30 +74,31 @@ public class EntityFloatingBlock extends Entity{
         int i = MathHelper.floor_double(posX);
         int j = MathHelper.floor_double(posY);
         int k = MathHelper.floor_double(posZ);
-        if(worldObj.getBlockId(i, j, k) == blockID || worldObj.getBlockId(i, j, k) == MomocraftBlocks.BlockAetherGrass.blockID && blockID == MomocraftBlocks.BlockAetherDirt.blockID)
+        if(fallTime == 1 && worldObj.getBlockId(i, j, k) == blockID)
         {
             worldObj.setBlockWithNotify(i, j, k, 0);
-        }
-        List list = worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox.expand(0.0D, 1.0D, 0.0D));
-        for(int l = 0; l < list.size(); l++)
+        } else
+        if(!worldObj.multiplayerWorld && fallTime == 1)
         {
-            if((list.get(l) instanceof EntityFallingSand) && worldObj.canBlockBePlacedAt(blockID, i, j, k, true, 1))
-            {
-                worldObj.setBlockAndMetadataWithNotify(i, j, k, blockID, metadata);
-                setEntityDead();
-            }
+            setEntityDead();
         }
-
-        if(isCollidedVertically && !onGround)
+        if(onGround)
         {
             motionX *= 0.69999998807907104D;
             motionZ *= 0.69999998807907104D;
             motionY *= -0.5D;
-            setEntityDead();
-            if(worldObj.canBlockBePlacedAt(blockID, i, j, k, true, 1) && !BlockFloating.canFallAbove(worldObj, i, j + 1, k) && worldObj.setBlockAndMetadataWithNotify(i, j, k, blockID, metadata) || worldObj.multiplayerWorld);
+            if(worldObj.getBlockId(i, j, k) != Block.pistonMoving.blockID)
+            {
+                setEntityDead();
+                if((!worldObj.canBlockBePlacedAt(blockID, i, j, k, true, 1) || BlockSand.canFallBelow(worldObj, i, j - 1, k) || !worldObj.setBlockWithNotify(i, j, k, blockID)) && !worldObj.multiplayerWorld)
+                {
+                    dropItem(blockID, 1);
+                }
+            }
         } else
-        if(flytime > 100 && !worldObj.multiplayerWorld)
+        if(fallTime > 100 && !worldObj.multiplayerWorld)
         {
+            dropItem(blockID, 1);
             setEntityDead();
         }
     }
@@ -118,8 +122,4 @@ public class EntityFloatingBlock extends Entity{
     {
         return worldObj;
     }
-
-    public int blockID;
-    public int metadata;
-    public int flytime;
 }

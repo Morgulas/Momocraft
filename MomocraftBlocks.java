@@ -15,6 +15,8 @@ public class MomocraftBlocks {
 			.setResistance(10f)						//Defini la resistance au explosion du bloc
 			.setStepSound(Block.soundStoneFootstep);//Defini le son joué quand marche dessus
 													//Etc...
+//	public static final Block BlockPortal = (new MomoWorldBlockPortal(MomocraftID.idBlockMomocraftPortal, ModLoader.getUniqueSpriteIndex("/terrain.png"))).setHardness(-1F).setStepSound(Block.soundGlassFootstep).setLightValue(0.75F).setBlockName("NameherePortal");
+
 //-------------------------------------------
 // Minefield
 //-------------------------------------------
@@ -25,7 +27,7 @@ public class MomocraftBlocks {
 // Aether Mod
 //-------------------------------------------
 	
-/**/public static final Block BlockAetherPortal = (new BlockPaille(MomocraftID.idBlockAetherPortal, MomocraftTextures.TexBlockAetherPortal)).setBlockName("BlockAetherPortal").setHardness(-1F).setResistance(6000000F);
+/**/public static final Block BlockAetherPortal = (new BlockAetherPortal(MomocraftID.idBlockAetherPortal, 14)).setBlockName("BlockAetherPortal").setHardness(-1F).setResistance(6000000F);
 	public static final Block BlockAetherDirt = (new BlockAetherDirt(MomocraftID.idBlockAetherDirt)).setBlockName("BlockAetherDirt").setHardness(0.2F).setStepSound(Block.soundGravelFootstep);
 	public static final Block BlockAetherGrass = (new BlockAetherGrass(MomocraftID.idBlockAetherGrass)).setBlockName("BlockAetherGrass").setHardness(0.2F).setStepSound(Block.soundGrassFootstep);
 	public static final Block BlockAetherQuicksoil = (new BlockAetherQuicksoil(MomocraftID.idBlockAetherQuicksoil)).setBlockName("BlockAetherQuicksoil").setHardness(0.5F).setStepSound(Block.soundSandFootstep);

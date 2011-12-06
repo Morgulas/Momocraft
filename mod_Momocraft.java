@@ -1,643 +1,511 @@
+/*
+ * Mod Momocraft - SteveVuillaume
+ * 
+ * stevevuillaume@gmail.com
+ * Pt:1
+ * 
+ */
+
 package net.minecraft.src;
 
 import java.io.PrintStream;
 import java.lang.reflect.Constructor;
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.Momocraft.*;
+
 import java.util.*;
 import org.lwjgl.opengl.GL11;
 
 //Class du mode qui hérite de BaseMod
-public class mod_Momocraft extends BaseMod{
+public class mod_Momocraft extends BaseModMp{
 	
 	//Déclaration de variable systèmes
-	
-    public static boolean SAPIexists;
-    public static int idBlockFirefly = 130;
-    public static int idBlockCicada = 131;
-    public static int idBlockPortal = 132;
-    public static int idBlockLog = 133;
-    public static int idBlockLeaves = 134;
-    public static int idBlockMazestone = 135;
-    public static int idBlockHedge = 136;
-    public static int idBlockBossSpawner = 137;
-    public static int idItemNagaScale = 7701;
-    public static int fireflyRenderID;
-    public static int cicadaRenderID;
+//	public static MomocraftFireworksSkyrocketManager props = new MomocraftFireworksSkyrocketManager();
 	    
 	//Constructeur
 	public mod_Momocraft() {
 		
 		//Appel des fonctions
-		new MomocraftBlocks();
-		new MomocraftItems();
-		new MomocraftMobs();
-		new MomocraftRecettes();		
-		new MomocraftTextures();
-
-		//TEST
+		new MMC_Block();
+		new MMC_Item();
+		new MMC_Mobs();
+		new MMC_Recettes();		
+		new MMC_Textures();
 		
-		ModLoader.SetInGameHook(this, true, true);
-        ModLoader.SetInGUIHook(this, true, true);
-
-
-        fireflyRenderID = ModLoader.getUniqueBlockModelID(this, false);
-        cicadaRenderID = ModLoader.getUniqueBlockModelID(this, false);
-
-
-	    
-
 		
+///////////////////////////////////////////////////////////////////////////
+//SECTION REGISTER ENTITIES
+///////////////////////////////////////////////////////////////////////////
+		
+//-------------------------------------------
+// RegisterEntityID
+//-------------------------------------------		
+		ModLoader.RegisterEntityID(MMC_EntityFloatingBlock.class, null, MMC_ID.idEntityFloatingBlock);
+		ModLoader.RegisterTileEntity(MMC_TileEntityPlaque.class, "Plaque");
+		
+//-------------------------------------------
+// RegisterNetClientHandlerEntity (Pour le multi)
+//-------------------------------------------
+		
+		//Fonctions de registration des Entities
+		//Coté Client
+		ModLoaderMp.RegisterNetClientHandlerEntity(MMC_EntityFloatingBlock.class, MMC_ID.idEntityFloatingBlock);
+		
+		//Coté Serveur
+		//ModLoaderMp.RegisterEntityTrackerEntry(EntityFloatingBlock.class, MomocraftID.idEntityFloatingBlock);
+		//ModLoaderMp.RegisterEntityTracker(EntityFloatingBlock.class, 160, 5);				//Le 5 correspont au Tick du jeu, c'est a dire 4 fois par seconde
+		
+		//Exemple
+		//ModLoaderMp.RegisterEntityTrackerEntry(MoCEntityKittyBed.class, 200);
+		//ModLoaderMp.RegisterEntityTracker(MoCEntityKittyBed.class, 160, 5);
+		
+///////////////////////////////////////////////////////////////////////////
+//	SECTION REGISTERBLOCK
+///////////////////////////////////////////////////////////////////////////
 
 //-------------------------------------------
 // Momocraft
 //-------------------------------------------
 		
-		/*Les Blocs*/		
-		ModLoader.RegisterBlock(MomocraftBlocks.TestBlock);				//Registration d'un bloc
-		ModLoader.AddName(MomocraftBlocks.TestBlock, "Bloc de test");	//Rajout d'un nom au bloc
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftTestBlock);				//Registration d'un bloc
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMomocraftFeuArtifice);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftFence1);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftStairs1);
+        
 		
-//		ModLoader.RegisterBlock(MomocraftBlocks.BlockPortal);				//Registration d'un bloc
-//		ModLoader.AddName(MomocraftBlocks.BlockPortal, "Bloc de portail");	//Rajout d'un nom au bloc
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueDiamond);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueGlass);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueGlowStone);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueGlowStoneLight);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueGold);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueIce);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueLapis);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueObsidian);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaquePlanks);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueSandStone);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueSteel);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueStone);
 		
-		/*Les Items*/
-		ModLoader.AddName(MomocraftItems.TestItem,"Item de test");		//Rajout d'un nom a l'item
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueCloth0);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueCloth1);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueCloth2);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueCloth3);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueCloth4);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueCloth5);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueCloth6);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueCloth7);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueCloth8);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueCloth9);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueCloth10);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueCloth11);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueCloth12);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueCloth13);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueCloth14);
+		ModLoader.RegisterBlock(MMC_Block.BlockMomocraftPlaqueCloth15);
 		
-
 //-------------------------------------------
 // Minefield
 //-------------------------------------------
 		
-		/*Les Blocs*/
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockPaille);								
-		ModLoader.AddName(MomocraftBlocks.BlockPaille, "Bloc de paille");
-		
-		/*Les Items*/
-		ModLoader.AddName(MomocraftItems.ObsiSword,"Epee d'obsidienne");		/*ObsiSword*/
-		ModLoader.AddName(MomocraftItems.Chope,"Chope");						/*Chope*/
-		ModLoader.AddName(MomocraftItems.IronBar,"Barre de fer");				/*IronBar*/				
-		ModLoader.AddName(MomocraftItems.CasqueObsi,"Casque d'obsidienne");		/*CasqueObsi*/	
-		ModLoader.AddName(MomocraftItems.ArmureObsi,"Armure d'obsidienne");		/*ArmureObsi*/	
-		ModLoader.AddName(MomocraftItems.JambeObsi,"Jambières d'obsidienne");	/*JambeObsi*/
-		ModLoader.AddName(MomocraftItems.PiedObsi,"Pied d'obsidienne");			/*PiedObsi*/
-		
-		
+        ModLoader.RegisterBlock(MMC_Block.BlockMinefieldArdoise);	
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldBancCentre);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldBancPied);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldBarriereFer);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldChaine);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldChaise);
+        
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldCouverts);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldEtagere);
+        
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldGlowstonePure);	
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldGobeur);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldHerse);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldHoublon);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldLanterne);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldLanterneEteinte);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldList);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldNappe);
+        ModLoader.RegisterBlock(MMC_Block.BlockMinefieldPaille);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldPoulie);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldPoulieMoving);
+        
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldSupportMural);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldTableBasse);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldTableCentre);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldTablePied);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldTablePlateau);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldTabouret);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldTonneau);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldVerreColo);
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockMinefieldVitreColo);
+      
 //-------------------------------------------
 // Aether Mod
 //-------------------------------------------
 		
-		/*Les Blocs*/
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherPortal);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherPortal, "Bloc du portail vers l'Aether");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherDirt);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherDirt, "Terre de l'Aether");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherGrass);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherGrass, "Herbe de l'Aether");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherQuicksoil);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherQuicksoil, "QuickSoil");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherHolystone);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherHolystone, "Holystone");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherIcestone);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherIcestone, "Icestone");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherAercloud);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherAercloud, "Aercloud");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherAerogel);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherAerogel, "Aerogel");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherEnchanter);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherEnchanter, "Enchanteur");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherIncubator);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherIncubator, "Incubateur");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherLog);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherLog, "Bois");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherPlank);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherPlank, "Planche de bois");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherSkyrootLeaves);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherSkyrootLeaves, "Feuilles de Skyroot");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherGoldenOakLeaves);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherGoldenOakLeaves, "Feuilles d'arbre d'or");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherSkyrootSapling);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherSkyrootSapling, "Pousse de Skyroot");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherGoldenOakSapling);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherGoldenOakSapling, "Pousse d'arbre d'or");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherAmbrosiumOre);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherAmbrosiumOre, "Minerai d'Ambrosium");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherAmbrosiumTorch);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherAmbrosiumTorch, "Torche d'Ambrosium");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherZaniteOre);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherZaniteOre, "Minerai de Zanite");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherGravititeOre);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherGravititeOre, "Minerai de Gravitite");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherEnchantedGravitite);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherEnchantedGravitite, "Gravitite enchantée");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherTrap);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherTrap, "Piège");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherChestMimic);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherChestMimic, "Coffre");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherTreasureChest);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherTreasureChest, "Coffre à trésor");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherDungeonStone);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherDungeonStone, "Pierre de donjon");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherLightDungeonStone);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherLightDungeonStone, "Pierre de donjon lumineuse");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherLockedDungeonStone);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherLockedDungeonStone, "Pierre de donjon vérouillé?");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherLockedLightDungeonStone);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherLockedLightDungeonStone, "Pierre de donjon lumineuse vérouillé?");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherPillar);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherPillar, "Pillier");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherZanite);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherZanite, "Block de Zanite");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherQuicksoilGlass);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherQuicksoilGlass, "QuicksoilGlass");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherFreezer);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherFreezer, "Freezer");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherWhiteFlower);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherWhiteFlower, "Fleur blanche");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherPurpleFlower);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherPurpleFlower, "Fleur violette");
-        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherBed);								
-		ModLoader.AddName(MomocraftBlocks.BlockAetherBed, "Lit");
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherPortal);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherDirt);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherGrass);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherQuicksoil);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherHolystone);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherIcestone);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherAercloud);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherAerogel);								
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherEnchanter);								
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherIncubator);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherLog);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherPlank);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherSkyrootLeaves);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherGoldenOakLeaves);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherSkyrootSapling);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherGoldenOakSapling);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherAmbrosiumOre);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherAmbrosiumTorch);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherZaniteOre);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherGravititeOre);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherEnchantedGravitite);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherTrap);								
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherChestMimic);								
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherTreasureChest);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherDungeonStone);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherLightDungeonStone);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherLockedDungeonStone);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherLockedLightDungeonStone);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherPillar);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherZanite);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherQuicksoilGlass);								
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherFreezer);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherWhiteFlower);								
+        ModLoader.RegisterBlock(MMC_Block.BlockAetherPurpleFlower);								
+//        ModLoader.RegisterBlock(MomocraftBlocks.BlockAetherBed);	
+        
+///////////////////////////////////////////////////////////////////////////
+//	SECTION ADDNAME - Tri pour version Serveur
+///////////////////////////////////////////////////////////////////////////        
+      
+//-------------------------------------------
+// Momocraft
+//------------------------------------------- 
+        
+		//Les Blocs        
+		ModLoader.AddName(MMC_Block.BlockMomocraftTestBlock, "Bloc de test");		//Rajout d'un nom au bloc
+//        ModLoader.AddName(MomocraftBlocks.BlockMomocraftFeuArtifice,"Lanceur de feu");
+//		ModLoader.AddName(MomocraftBlocks.BlockMomocraftFence1, "Barriere de test");
+//		ModLoader.AddName(MomocraftBlocks.BlockMomocraftStairs1, "Escalier de test");
+		
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueDiamond, "Plaque en diamant");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueGlass, "Plaque en verre");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueGlowStone, "Plaque en rayonnite");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueGold, "Plaque en or");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueIce, "Plaque en glace");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueLapis, "Plaque en lapis");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueObsidian, "Plaque en obsidienne");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaquePlanks, "Plaque en planche");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueSandStone, "Plaque en gres");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueSteel, "Plaque en fer");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueStone, "Plaque en pierre");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueCloth0, "Plaque en laine blanche");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueCloth1, "Plaque en laine orange");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueCloth2, "Plaque en laine magenta");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueCloth3, "Plaque en laine bleu ciel");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueCloth4, "Plaque en laine jaune");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueCloth5, "Plaque en laine vert lime");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueCloth6, "Plaque en laine rose");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueCloth7, "Plaque en laine grise");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueCloth8, "Plaque en laine gris clair");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueCloth9, "Plaque en laine cyan");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueCloth10, "Plaque en laine violette");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueCloth11, "Plaque en laine bleue");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueCloth12, "Plaque en laine marron");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueCloth13, "Plaque en laine verte");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueCloth14, "Plaque en laine rouge");
+		ModLoader.AddName(MMC_Block.BlockMomocraftPlaqueCloth15, "Plaque en laine noire");
 		
 		
-		/*Les Items*/
-		ModLoader.AddName(MomocraftItems.ItemAetherVictoryMedal,"Médaille de victoire");	
-		ModLoader.AddName(MomocraftItems.ItemAetherKey,"Clé");	
-		ModLoader.AddName(MomocraftItems.ItemAetherLoreBook,"Livre d'histoire");	
-		ModLoader.AddName(MomocraftItems.ItemAetherMoaEgg,"Oeuf de Moa");	
-		ModLoader.AddName(MomocraftItems.ItemAetherBlueMusicDisk,"Disque Bleu");	
-		ModLoader.AddName(MomocraftItems.ItemAetherGoldenAmber,"TEST");	
-		ModLoader.AddName(MomocraftItems.ItemAetherAechorPetal,"Pétale d'Aechor");	
-		ModLoader.AddName(MomocraftItems.ItemAetherStick,"Baton de l'Aether");	
-		ModLoader.AddName(MomocraftItems.ItemAetherDart,"Dart");	
-		ModLoader.AddName(MomocraftItems.ItemAetherDartShooter,"Dart Shooter");	
-		ModLoader.AddName(MomocraftItems.ItemAetherAmbrosiumShard,"Ambrosium Shard");	
-		ModLoader.AddName(MomocraftItems.ItemAetherZanite,"Zanite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherBucket,"Sot");	
-		ModLoader.AddName(MomocraftItems.ItemAetherPickSkyroot,"Pioche en Skyroot");	
-		ModLoader.AddName(MomocraftItems.ItemAetherPickHolystone,"Pioche en Holystone");	
-		ModLoader.AddName(MomocraftItems.ItemAetherPickZanite,"Pioche en Zanite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherPickGravitite,"Pioche en Gravitite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherShovelSkyroot,"Pelle en Skyroot");	
-		ModLoader.AddName(MomocraftItems.ItemAetherShovelHolystone,"Pelle en Holystone");	
-		ModLoader.AddName(MomocraftItems.ItemAetherShovelZanite,"Pelle en Zanite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherShovelGravitite,"Pelle en Gravitite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherAxeSkyroot,"Hache en Skyroot");	
-		ModLoader.AddName(MomocraftItems.ItemAetherAxeHolystone,"Hache en Holystone");	
-		ModLoader.AddName(MomocraftItems.ItemAetherAxeZanite,"Hache en Zanite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherAxeGravitite,"Hache en Gravitite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherSwordSkyroot,"Epée en Skyroot");	
-		ModLoader.AddName(MomocraftItems.ItemAetherSwordHolystone,"Epée en Holystone");	
-		ModLoader.AddName(MomocraftItems.ItemAetherSwordZanite,"Epée en Zanite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherSwordGravitite,"Epée en Gravitite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherIronBubble,"Bulle de fer");	
-		ModLoader.AddName(MomocraftItems.ItemAetherPigSlayer,"TEST");	
-		ModLoader.AddName(MomocraftItems.ItemAetherVampireBlade,"Lame vampirique");	
-		ModLoader.AddName(MomocraftItems.ItemAetherNatureStaff,"TEST");	
-		ModLoader.AddName(MomocraftItems.ItemAetherSwordFire,"Epée enflamée");	
-		ModLoader.AddName(MomocraftItems.ItemAetherSwordHoly,"Sainte épée");	
-		ModLoader.AddName(MomocraftItems.ItemAetherSwordLightning,"Epée lumineuse");	
-		ModLoader.AddName(MomocraftItems.ItemAetherLightningKnife,"Couteau lumineux");	
-		ModLoader.AddName(MomocraftItems.ItemAetherGummieSwet,"TEST");	
-		ModLoader.AddName(MomocraftItems.ItemAetherHammerNotch,"Marteau de Notch");	
-		ModLoader.AddName(MomocraftItems.ItemAetherPhoenixBow,"Arc du Phoenix");	
-		ModLoader.AddName(MomocraftItems.ItemAetherCloudParachute,"Parachute Nuage");	
-		ModLoader.AddName(MomocraftItems.ItemAetherCloudParachuteGold,"Parachute Nuage d'Or");	
-		ModLoader.AddName(MomocraftItems.ItemAetherCloudStaff,"TEST");	
-		ModLoader.AddName(MomocraftItems.ItemAetherLifeShard,"TEST");	
-		ModLoader.AddName(MomocraftItems.ItemAetherGoldenFeather,"Plume d'or");	
-		ModLoader.AddName(MomocraftItems.ItemAetherLance,"Lance");	
-		ModLoader.AddName(MomocraftItems.ItemAetherIronRing,"Anneau de fer");	
-		ModLoader.AddName(MomocraftItems.ItemAetherGoldRing,"Anneau d'or");	
-		ModLoader.AddName(MomocraftItems.ItemAetherZaniteRing,"Anneau de zanite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherIronPendant,"Pendentif de fer");	
-		ModLoader.AddName(MomocraftItems.ItemAetherGoldPendant,"Pendentif d'or");	
-		ModLoader.AddName(MomocraftItems.ItemAetherZanitePendant,"Pendentif de zanite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherRepShield,"TEST");	
-		ModLoader.AddName(MomocraftItems.ItemAetherAetherCape,"Cape de l'Aether");	
-		ModLoader.AddName(MomocraftItems.ItemAetherLeatherGlove,"Gants en cuir");	
-		ModLoader.AddName(MomocraftItems.ItemAetherIronGlove,"Gants en fer");	
-		ModLoader.AddName(MomocraftItems.ItemAetherGoldGlove,"Gants en or");	
-		ModLoader.AddName(MomocraftItems.ItemAetherDiamondGlove,"Gants en diamand");	
-		ModLoader.AddName(MomocraftItems.ItemAetherZaniteGlove,"Gants en zanite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherZaniteHelmet,"Casque en zanite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherZaniteChestplate,"Armure en zanite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherZaniteLeggings,"Jambières en zanite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherZaniteBoots,"Bottes en zanite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherGravititeGlove,"Gants en gravitite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherGravititeHelmet,"Casque en gravitite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherGravititeBodyplate,"Armure en plaque de gravitite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherGravititePlatelegs,"Jambières en plaque de gravitite ");	
-		ModLoader.AddName(MomocraftItems.ItemAetherGravititeBoots,"Bottes en gravitite");	
-		ModLoader.AddName(MomocraftItems.ItemAetherPhoenixGlove,"Gants du Phoenix");	
-		ModLoader.AddName(MomocraftItems.ItemAetherPhoenixHelm,"Casque du Phoenix");	
-		ModLoader.AddName(MomocraftItems.ItemAetherPhoenixBody,"Armure du Phoenix");	
-		ModLoader.AddName(MomocraftItems.ItemAetherPhoenixLegs,"Jambières du Phoenix");	
-		ModLoader.AddName(MomocraftItems.ItemAetherPhoenixBoots,"Bottes du Phoenix");	
-		ModLoader.AddName(MomocraftItems.ItemAetherObsidianGlove,"Gants en obsidienne");	
-		ModLoader.AddName(MomocraftItems.ItemAetherObsidianBody,"Armure en obsidienne");	
-		ModLoader.AddName(MomocraftItems.ItemAetherObsidianHelm,"Casque en obsidienne");	
-		ModLoader.AddName(MomocraftItems.ItemAetherObsidianLegs,"Jambières en obsidienne");	
-		ModLoader.AddName(MomocraftItems.ItemAetherObsidianBoots,"Bottes en obsidienne");	
-		ModLoader.AddName(MomocraftItems.ItemAetherNeptuneGlove,"Gants de Neptune");	
-		ModLoader.AddName(MomocraftItems.ItemAetherNeptuneHelmet,"Casque de Neptune");	
-		ModLoader.AddName(MomocraftItems.ItemAetherNeptuneChestplate,"Armure de Neptune");	
-		ModLoader.AddName(MomocraftItems.ItemAetherNeptuneLeggings,"Jambières de Neptune");	
-		ModLoader.AddName(MomocraftItems.ItemAetherNeptuneBoots,"Bottes de Neptune");	
-		ModLoader.AddName(MomocraftItems.ItemAetherRegenerationStone,"Pierre de regeneration");	
-		ModLoader.AddName(MomocraftItems.ItemAetherInvisibilityCloak,"Manteau d'invisibilité");	
-		ModLoader.AddName(MomocraftItems.ItemAetherAgilityCape,"Cape d'agilité");	
-		ModLoader.AddName(MomocraftItems.ItemAetherWhiteCape,"Cape blanche");	
-		ModLoader.AddName(MomocraftItems.ItemAetherRedCape,"Cape rouge");	
-		ModLoader.AddName(MomocraftItems.ItemAetherYellowCape,"Cape jaune");	
-		ModLoader.AddName(MomocraftItems.ItemAetherBlueCape,"Cape bleu");	
-		ModLoader.AddName(MomocraftItems.ItemAetherPickValkyrie,"Pioche des Valkyries");	
-		ModLoader.AddName(MomocraftItems.ItemAetherAxeValkyrie,"Hache des Valkyries");	
-		ModLoader.AddName(MomocraftItems.ItemAetherShovelValkyrie,"Pelle des Valkyries");	
-		ModLoader.AddName(MomocraftItems.ItemAetherHealingStone,"Pierre de soin");	
-		ModLoader.AddName(MomocraftItems.ItemAetherIceRing,"Anneau de glace");	
-		ModLoader.AddName(MomocraftItems.ItemAetherIcePendant,"Pendentif de glace");	
-/**/	
-	
+		//Les Items
+		ModLoader.AddName(MMC_Item.ItemMomocraftTestItem,"Item de test");						//Rajout d'un nom à l'item
+        ModLoader.AddName(MMC_Item.ItemMomocraftCharniere, "Charniere");
+		ModLoader.AddName(MMC_Item.ItemMomocraftRail, "Rail");
+		
+//-------------------------------------------
+// Minefield
+//-------------------------------------------
+		
+		//Les Blocs		
+        ModLoader.AddName(MMC_Block.BlockMinefieldArdoise,"Bloc en ardoise");	
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldBancCentre,"Banc Centre");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldBancPied,"Banc Pied");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldBarriereFer,"Barriere de fer");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldChaine,"Chaine");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldChaise,"Chaise");
+        
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldCouverts,"Couverts");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldEtagere,"Etagère");
+        
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldGlowstonePure,"Glowstone pure");	
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldGobeur,"Gobeur");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldHerse,"Herse");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldHoublon,"Houblon");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldLanterne,"Lanterne");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldLanterneEteinte,"Lanterne eteinte");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldList,"Liste");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldNappe,"Nappe");*/
+        ModLoader.AddName(MMC_Block.BlockMinefieldPaille, "Bloc de paille");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldPoulie,"Poulie");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldPoulieMoving,"Poulie");
+        
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldSupportMural,"Support mural");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldTableBasse,"Table basse");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldTableCentre,"Table Centre");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldTablePied,"Table Pied");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldTablePlateau,"Table Plateau");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldTabouret,"Tabouret");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldTonneau,"Tonneau");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldVerreColo,"Verre Colo");
+//        ModLoader.AddName(MomocraftBlocks.BlockMinefieldVitreColo,"Vitre Colo");
+        
+		//Les Items
+		ModLoader.AddName(MMC_Item.ItemMinefieldBierre,"Chope de bière");
+		ModLoader.AddName(MMC_Item.ItemMinefieldBarreDeFer,"Barre de fer");
+		ModLoader.AddName(MMC_Item.ItemMinefieldObsiEpee,"Epée d'obsidienne");
+		ModLoader.AddName(MMC_Item.ItemMinefieldObsiPioche,"Pioche d'obsidienne");
+		ModLoader.AddName(MMC_Item.ItemMinefieldObsiPelle,"Pelle d'obsidienne");
+		ModLoader.AddName(MMC_Item.ItemMinefieldObsiHache,"Hache d'obsidienne");
+		ModLoader.AddName(MMC_Item.ItemMinefieldObsiBeche,"Beche d'obsidienne");	
+		ModLoader.AddName(MMC_Item.ItemMinefieldObsidienneIngot,"Lingot d'obsidienne");
+		ModLoader.AddName(MMC_Item.ItemMinefieldCerclageFer,"Cerclage de fer");
+		ModLoader.AddName(MMC_Item.ItemMinefieldCarte,"Carte aux Trésors");
+		
+//		  ModLoader.AddName(MomocraftItems.ItemMinefieldRideauBlanc,"Rideau Blanc");	
+				
 		
 		
-
+//-------------------------------------------
+// Aether Mod
+//-------------------------------------------	
 		
-
-//-----------------------------------------------------------------------	
+		//Les Blocs
+		ModLoader.AddName(MMC_Block.BlockAetherPortal, "Bloc du portail vers l'Aether");
+		ModLoader.AddName(MMC_Block.BlockAetherDirt, "Terre de l'Aether");
+		ModLoader.AddName(MMC_Block.BlockAetherGrass, "Herbe de l'Aether");
+		ModLoader.AddName(MMC_Block.BlockAetherQuicksoil, "QuickSoil");
+		ModLoader.AddName(MMC_Block.BlockAetherHolystone, "Holystone");
+		ModLoader.AddName(MMC_Block.BlockAetherIcestone, "Icestone");
+		ModLoader.AddName(MMC_Block.BlockAetherAercloud, "Aercloud");
+		ModLoader.AddName(MMC_Block.BlockAetherAerogel, "Aerogel");
+//  	  ModLoader.AddName(MomocraftBlocks.BlockAetherEnchanter, "Enchanteur");
+//		  ModLoader.AddName(MomocraftBlocks.BlockAetherIncubator, "Incubateur");
+		ModLoader.AddName(MMC_Block.BlockAetherLog, "Bois");
+		ModLoader.AddName(MMC_Block.BlockAetherPlank, "Planche de bois");
+		ModLoader.AddName(MMC_Block.BlockAetherSkyrootLeaves, "Feuilles de Skyroot");
+		ModLoader.AddName(MMC_Block.BlockAetherGoldenOakLeaves, "Feuilles d'arbre d'or");
+		ModLoader.AddName(MMC_Block.BlockAetherSkyrootSapling, "Pousse de Skyroot");
+		ModLoader.AddName(MMC_Block.BlockAetherGoldenOakSapling, "Pousse d'arbre d'or");
+		ModLoader.AddName(MMC_Block.BlockAetherAmbrosiumOre, "Minerai d'Ambrosium");
+		ModLoader.AddName(MMC_Block.BlockAetherAmbrosiumTorch, "Torche d'Ambrosium");
+		ModLoader.AddName(MMC_Block.BlockAetherZaniteOre, "Minerai de Zanite");
+		ModLoader.AddName(MMC_Block.BlockAetherGravititeOre, "Minerai de Gravitite");
+		ModLoader.AddName(MMC_Block.BlockAetherEnchantedGravitite, "Gravitite enchantée");
+		ModLoader.AddName(MMC_Block.BlockAetherTrap, "Piège");
+//		  ModLoader.AddName(MomocraftBlocks.BlockAetherChestMimic, "Coffre");
+//		  ModLoader.AddName(MomocraftBlocks.BlockAetherTreasureChest, "Coffre à trésor");
+		ModLoader.AddName(MMC_Block.BlockAetherDungeonStone, "Pierre de donjon");
+		ModLoader.AddName(MMC_Block.BlockAetherLightDungeonStone, "Pierre de donjon lumineuse");
+		ModLoader.AddName(MMC_Block.BlockAetherLockedDungeonStone, "Pierre de donjon verrouillée");
+		ModLoader.AddName(MMC_Block.BlockAetherLockedLightDungeonStone, "Pierre de donjon lumineuse verrouillée");
+		ModLoader.AddName(MMC_Block.BlockAetherPillar, "Pillier");
+		ModLoader.AddName(MMC_Block.BlockAetherZanite, "Block de Zanite");
+		ModLoader.AddName(MMC_Block.BlockAetherQuicksoilGlass, "QuicksoilGlass");
+//		  ModLoader.AddName(MomocraftBlocks.BlockAetherFreezer, "Freezer");
+		ModLoader.AddName(MMC_Block.BlockAetherWhiteFlower, "Fleur blanche");
+		ModLoader.AddName(MMC_Block.BlockAetherPurpleFlower, "Fleur violette");
+//		  ModLoader.AddName(MomocraftBlocks.BlockAetherBed, "Lit");
+		
+		//Les Items
+		ModLoader.AddName(MMC_Item.ItemAetherVictoryMedal,"Médaille de victoire");	
+		ModLoader.AddName(MMC_Item.ItemAetherKey,"Clé");	
+		ModLoader.AddName(MMC_Item.ItemAetherLoreBook,"Livre d'histoire");	
+		ModLoader.AddName(MMC_Item.ItemAetherMoaEgg,"Oeuf de Moa");	
+		ModLoader.AddName(MMC_Item.ItemAetherBlueMusicDisk,"Disque Bleu");	
+		ModLoader.AddName(MMC_Item.ItemAetherGoldenAmber,"Ambre doré");	
+		ModLoader.AddName(MMC_Item.ItemAetherAechorPetal,"Pétale d'Aechor");	
+		ModLoader.AddName(MMC_Item.ItemAetherStick,"Baton de l'Aether");	
+		ModLoader.AddName(MMC_Item.ItemAetherDart,"Dard");	
+		ModLoader.AddName(MMC_Item.ItemAetherDartShooter,"Sarbacane");	
+		ModLoader.AddName(MMC_Item.ItemAetherAmbrosiumShard,"Echarde d'Ambrosium");	
+		ModLoader.AddName(MMC_Item.ItemAetherZanite,"Zanite");	
+		ModLoader.AddName(MMC_Item.ItemAetherBucket,"Sot");	
+		ModLoader.AddName(MMC_Item.ItemAetherPickSkyroot,"Pioche en Skyroot");	
+		ModLoader.AddName(MMC_Item.ItemAetherPickHolystone,"Pioche en Holystone");	
+		ModLoader.AddName(MMC_Item.ItemAetherPickZanite,"Pioche en Zanite");	
+		ModLoader.AddName(MMC_Item.ItemAetherPickGravitite,"Pioche en Gravitite");	
+		ModLoader.AddName(MMC_Item.ItemAetherShovelSkyroot,"Pelle en Skyroot");	
+		ModLoader.AddName(MMC_Item.ItemAetherShovelHolystone,"Pelle en Holystone");	
+		ModLoader.AddName(MMC_Item.ItemAetherShovelZanite,"Pelle en Zanite");	
+		ModLoader.AddName(MMC_Item.ItemAetherShovelGravitite,"Pelle en Gravitite");	
+		ModLoader.AddName(MMC_Item.ItemAetherAxeSkyroot,"Hache en Skyroot");	
+		ModLoader.AddName(MMC_Item.ItemAetherAxeHolystone,"Hache en Holystone");	
+		ModLoader.AddName(MMC_Item.ItemAetherAxeZanite,"Hache en Zanite");	
+		ModLoader.AddName(MMC_Item.ItemAetherAxeGravitite,"Hache en Gravitite");	
+		ModLoader.AddName(MMC_Item.ItemAetherSwordSkyroot,"Epée en Skyroot");	
+		ModLoader.AddName(MMC_Item.ItemAetherSwordHolystone,"Epée en Holystone");	
+		ModLoader.AddName(MMC_Item.ItemAetherSwordZanite,"Epée en Zanite");	
+		ModLoader.AddName(MMC_Item.ItemAetherSwordGravitite,"Epée en Gravitite");	
+		ModLoader.AddName(MMC_Item.ItemAetherIronBubble,"Bulle de fer");	
+		ModLoader.AddName(MMC_Item.ItemAetherPigSlayer,"? de porc");	
+		ModLoader.AddName(MMC_Item.ItemAetherVampireBlade,"Lame vampirique");	
+		ModLoader.AddName(MMC_Item.ItemAetherNatureStaff,"Nature Staff");	
+		ModLoader.AddName(MMC_Item.ItemAetherSwordFire,"Epée enflamée");	
+		ModLoader.AddName(MMC_Item.ItemAetherSwordHoly,"Sainte épée");	
+		ModLoader.AddName(MMC_Item.ItemAetherSwordLightning,"Epée lumineuse");	
+		ModLoader.AddName(MMC_Item.ItemAetherLightningKnife,"Couteau lumineux");	
+		ModLoader.AddName(MMC_Item.ItemAetherGummieSwet,"Gummie Swet");	
+		ModLoader.AddName(MMC_Item.ItemAetherHammerNotch,"Marteau de Notch");	
+		ModLoader.AddName(MMC_Item.ItemAetherPhoenixBow,"Arc du Phoenix");	
+		ModLoader.AddName(MMC_Item.ItemAetherCloudParachute,"Parachute Nuage");	
+		ModLoader.AddName(MMC_Item.ItemAetherCloudParachuteGold,"Parachute Nuage d'Or");	
+		ModLoader.AddName(MMC_Item.ItemAetherCloudStaff,"CloudStaff");	
+		ModLoader.AddName(MMC_Item.ItemAetherLifeShard,"Life Shard");	
+		ModLoader.AddName(MMC_Item.ItemAetherGoldenFeather,"Plume d'or");	
+		ModLoader.AddName(MMC_Item.ItemAetherLance,"Lance");	
+		ModLoader.AddName(MMC_Item.ItemAetherIronRing,"Anneau de fer");	
+		ModLoader.AddName(MMC_Item.ItemAetherGoldRing,"Anneau d'or");	
+		ModLoader.AddName(MMC_Item.ItemAetherZaniteRing,"Anneau de zanite");	
+		ModLoader.AddName(MMC_Item.ItemAetherIronPendant,"Pendentif de fer");	
+		ModLoader.AddName(MMC_Item.ItemAetherGoldPendant,"Pendentif d'or");	
+		ModLoader.AddName(MMC_Item.ItemAetherZanitePendant,"Pendentif de zanite");	
+		ModLoader.AddName(MMC_Item.ItemAetherRepShield,"Bouclier de répulsion");	
+		ModLoader.AddName(MMC_Item.ItemAetherAetherCape,"Cape de l'Aether");	
+		ModLoader.AddName(MMC_Item.ItemAetherLeatherGlove,"Gants en cuir");	
+		ModLoader.AddName(MMC_Item.ItemAetherIronGlove,"Gants en fer");	
+		ModLoader.AddName(MMC_Item.ItemAetherGoldGlove,"Gants en or");	
+		ModLoader.AddName(MMC_Item.ItemAetherDiamondGlove,"Gants en diamand");	
+		ModLoader.AddName(MMC_Item.ItemAetherZaniteGlove,"Gants en zanite");	
+		ModLoader.AddName(MMC_Item.ItemAetherZaniteHelmet,"Casque en zanite");	
+		ModLoader.AddName(MMC_Item.ItemAetherZaniteChestplate,"Armure en zanite");	
+		ModLoader.AddName(MMC_Item.ItemAetherZaniteLeggings,"Jambières en zanite");	
+		ModLoader.AddName(MMC_Item.ItemAetherZaniteBoots,"Bottes en zanite");	
+		ModLoader.AddName(MMC_Item.ItemAetherGravititeGlove,"Gants en gravitite");	
+		ModLoader.AddName(MMC_Item.ItemAetherGravititeHelmet,"Casque en gravitite");	
+		ModLoader.AddName(MMC_Item.ItemAetherGravititeBodyplate,"Armure en plaque de gravitite");	
+		ModLoader.AddName(MMC_Item.ItemAetherGravititePlatelegs,"Jambières en plaque de gravitite ");	
+		ModLoader.AddName(MMC_Item.ItemAetherGravititeBoots,"Bottes en gravitite");	
+		ModLoader.AddName(MMC_Item.ItemAetherPhoenixGlove,"Gants du Phoenix");	
+		ModLoader.AddName(MMC_Item.ItemAetherPhoenixHelm,"Casque du Phoenix");	
+		ModLoader.AddName(MMC_Item.ItemAetherPhoenixBody,"Armure du Phoenix");	
+		ModLoader.AddName(MMC_Item.ItemAetherPhoenixLegs,"Jambières du Phoenix");	
+		ModLoader.AddName(MMC_Item.ItemAetherPhoenixBoots,"Bottes du Phoenix");	
+		ModLoader.AddName(MMC_Item.ItemAetherObsidianGlove,"Gants en obsidienne");	
+//		  ModLoader.AddName(MomocraftItems.ItemAetherObsidianBody,"Armure en obsidienne");	
+//		  ModLoader.AddName(MomocraftItems.ItemAetherObsidianHelm,"Casque en obsidienne");	
+//		  ModLoader.AddName(MomocraftItems.ItemAetherObsidianLegs,"Jambières en obsidienne");	
+//		  ModLoader.AddName(MomocraftItems.ItemAetherObsidianBoots,"Bottes en obsidienne");	
+		ModLoader.AddName(MMC_Item.ItemAetherNeptuneGlove,"Gants de Neptune");	
+		ModLoader.AddName(MMC_Item.ItemAetherNeptuneHelmet,"Casque de Neptune");	
+		ModLoader.AddName(MMC_Item.ItemAetherNeptuneChestplate,"Armure de Neptune");	
+		ModLoader.AddName(MMC_Item.ItemAetherNeptuneLeggings,"Jambières de Neptune");	
+		ModLoader.AddName(MMC_Item.ItemAetherNeptuneBoots,"Bottes de Neptune");	
+		ModLoader.AddName(MMC_Item.ItemAetherRegenerationStone,"Pierre de regeneration");	
+		ModLoader.AddName(MMC_Item.ItemAetherInvisibilityCloak,"Manteau d'invisibilité");	
+		ModLoader.AddName(MMC_Item.ItemAetherAgilityCape,"Cape d'agilité");	
+		ModLoader.AddName(MMC_Item.ItemAetherWhiteCape,"Cape blanche");	
+		ModLoader.AddName(MMC_Item.ItemAetherRedCape,"Cape rouge");	
+		ModLoader.AddName(MMC_Item.ItemAetherYellowCape,"Cape jaune");	
+		ModLoader.AddName(MMC_Item.ItemAetherBlueCape,"Cape bleu");	
+		ModLoader.AddName(MMC_Item.ItemAetherPickValkyrie,"Pioche des Valkyries");	
+		ModLoader.AddName(MMC_Item.ItemAetherAxeValkyrie,"Hache des Valkyries");	
+		ModLoader.AddName(MMC_Item.ItemAetherShovelValkyrie,"Pelle des Valkyries");	
+		ModLoader.AddName(MMC_Item.ItemAetherHealingStone,"Pierre de soin");	
+		ModLoader.AddName(MMC_Item.ItemAetherIceRing,"Anneau de glace");	
+		ModLoader.AddName(MMC_Item.ItemAetherIcePendant,"Pendentif de glace");		
 	}		
 	
-	//Fonctions liées au portail
+///////////////////////////////////////////////////////////////////////////
+//	TICK
+/////////////////////////////////////////////////////////////////////////// 	
 	
+	public boolean OnTickInGame(Minecraft minecraft)
+    {
+		return false;
+		
+    }
+	
+	
+///////////////////////////////////////////////////////////////////////////
+//	METHODE DU MOD
+/////////////////////////////////////////////////////////////////////////// 
+	
+	
+	//Methode de rendu sur le mod (Important pour la gravitite par exemple, et les items à effet visuelle)
     public void AddRenderer(Map map)
     {
-        
+        MMC_Block.AddRenderer(map);
+        MMC_Item.AddRenderer(map);
     }
 
-    public void GenerateSurface(World world, Random random, int i, int j)
-    {
-    }
-
-    protected void makeSupplyChest(World world, Random random, int i, int j)
-    {
-        int k = world.worldInfo.getSpawnX();
-        int l = world.worldInfo.getSpawnZ();
-        if(k != 0 && l != 0 && k >= i && k <= i + 16 && l >= j && l <= j + 16)
-        {
-            System.out.println((new StringBuilder()).append("Making supply chest at ").append(k).append(", ").append(l).toString());
-            int i1 = (k + random.nextInt(8)) - random.nextInt(8);
-            int j1 = (l + random.nextInt(8)) - random.nextInt(8);
-            int k1 = world.getTopSolidOrLiquidBlock(i1, j1);
-            world.setBlockWithNotify(i1, k1, j1, Block.chest.blockID);
-            TileEntityChest tileentitychest = (TileEntityChest)world.getBlockTileEntity(i1, k1, j1);
-            if(tileentitychest != null && tileentitychest.getSizeInventory() > 0)
-            {
-                tileentitychest.setInventorySlotContents(0, new ItemStack(Item.appleGold));
-                tileentitychest.setInventorySlotContents(1, new ItemStack(Item.pickaxeDiamond));
-                tileentitychest.setInventorySlotContents(2, new ItemStack(Item.shovelDiamond));
-                tileentitychest.setInventorySlotContents(3, new ItemStack(Item.axeDiamond));
-                tileentitychest.setInventorySlotContents(4, new ItemStack(Item.swordSteel));
-                tileentitychest.setInventorySlotContents(5, new ItemStack(Block.obsidian, 14));
-                tileentitychest.setInventorySlotContents(6, new ItemStack(Item.flintAndSteel));
-                tileentitychest.setInventorySlotContents(7, new ItemStack(Block.mushroomRed, 64));
-                tileentitychest.setInventorySlotContents(8, new ItemStack(Block.plantRed, 64));
-                tileentitychest.setInventorySlotContents(9, new ItemStack(Block.plantYellow, 64));
-                tileentitychest.setInventorySlotContents(10, new ItemStack(Block.mushroomBrown, 64));
-                tileentitychest.setInventorySlotContents(11, new ItemStack(Item.diamond, 64));
-                tileentitychest.setInventorySlotContents(12, new ItemStack(Item.bucketWater, 1));
-            }
-        }
-    }
-
-    public boolean OnTickInGame(float f, Minecraft minecraft)
-    {
-        if(!minecraft.theWorld.multiplayerWorld && minecraft.thePlayer != null && (double)minecraft.thePlayer.timeInPortal > 0.80000000000000004D && minecraft.thePlayer.timeUntilPortal == 0)
-        {
-            interceptPortal(minecraft);
-        }
-        if(minecraft.thePlayer != null && minecraft.thePlayer.dimension == 7 && !(minecraft.theWorld instanceof AetherWorld))
-        {
-            sendToTwilightForest(minecraft);
-        }
-        if(minecraft.thePlayer != null && (minecraft.theWorld.worldProvider instanceof AetherWorldProvider) && minecraft.thePlayer.dimension != 7)
-        {
-            minecraft.thePlayer.dimension = 7;
-            System.err.println("Found the player in the wrong dimension.");
-        }
-        for(int i = 0; i < minecraft.theWorld.loadedEntityList.size(); i++)
-        {
-            Entity entity = (Entity)minecraft.theWorld.loadedEntityList.get(i);
-            if((entity instanceof EntityItem) && entity.inWater && ((EntityItem)entity).item.itemID == Item.diamond.shiftedIndex)
-            {
-                System.out.println("I found a diamond in the water!");
-                //((BlockTFPortal)TFBlocks.portal).tryToCreatePortal(minecraft.theWorld, (int)entity.posX, (int)entity.posY, (int)entity.posZ);
-                sendToTwilightForest(minecraft);
-            }
-        }
-
-        return true;
-    }
-
-    public boolean OnTickInGUI(float f, Minecraft minecraft, GuiScreen guiscreen)
-    {
-        if(minecraft.thePlayer != null && minecraft.thePlayer.dimension == 7 && !(minecraft.theWorld.worldProvider instanceof AetherWorldProvider))
-        {
-            sendToTwilightForest(minecraft);
-        }
-        return true;
-    }
-
-    public void interceptPortal(Minecraft minecraft)
-    {
-        boolean flag = isAABBInBlockID(minecraft.theWorld, minecraft.thePlayer.boundingBox, TFBlocks.portal.blockID);
-        if(minecraft.thePlayer.dimension == 7)
-        {
-            usePortal(minecraft, 0);
-        } else
-        if(minecraft.thePlayer.dimension == 0 && flag)
-        {
-            usePortal(minecraft, 7);
-        }
-    }
-
-    public boolean isAABBInBlockID(World world, AxisAlignedBB axisalignedbb, int i)
-    {
-        int j = MathHelper.floor_double(axisalignedbb.minX);
-        int k = MathHelper.floor_double(axisalignedbb.maxX + 1.0D);
-        int l = MathHelper.floor_double(axisalignedbb.minY);
-        int i1 = MathHelper.floor_double(axisalignedbb.maxY + 1.0D);
-        int j1 = MathHelper.floor_double(axisalignedbb.minZ);
-        int k1 = MathHelper.floor_double(axisalignedbb.maxZ + 1.0D);
-        for(int l1 = j; l1 < k; l1++)
-        {
-            for(int i2 = l; i2 < i1; i2++)
-            {
-                for(int j2 = j1; j2 < k1; j2++)
-                {
-                    if(world.getBlockId(l1, i2, j2) == i)
-                    {
-                        return true;
-                    }
-                }
-
-            }
-
-        }
-
-        return false;
-    }
-
-    public void usePortal(Minecraft minecraft, int i)
-    {
-        minecraft.thePlayer.timeUntilPortal = 10;
-        minecraft.thePlayer.timeInPortal = 0.0F;
-        if(i == 0)
-        {
-            sendToSurface(minecraft);
-        } else
-        if(i == 7)
-        {
-            sendToTwilightForest(minecraft);
-        }
-        if(minecraft.thePlayer.isEntityAlive())
-        {
-            minecraft.thePlayer.setLocationAndAngles(minecraft.thePlayer.posX, minecraft.thePlayer.posY, minecraft.thePlayer.posZ, minecraft.thePlayer.rotationYaw, minecraft.thePlayer.rotationPitch);
-            minecraft.theWorld.updateEntityWithOptionalForce(minecraft.thePlayer, false);
-            (new AetherWorldTeleporter()).placeInPortal(minecraft.theWorld, minecraft.thePlayer);
-        }
-    }
-
-    public void sendToTwilightForest(Minecraft minecraft)
-    {
-        minecraft.theWorld.setEntityDead(minecraft.thePlayer);
-        minecraft.thePlayer.isDead = false;
-        double d = minecraft.thePlayer.posY;
-        if(minecraft.thePlayer.dimension == 0)
-        {
-            d *= 0.5D;
-        }
-        minecraft.thePlayer.setLocationAndAngles(minecraft.thePlayer.posX, d, minecraft.thePlayer.posZ, minecraft.thePlayer.rotationYaw, minecraft.thePlayer.rotationPitch);
-        if(minecraft.thePlayer.isEntityAlive())
-        {
-            minecraft.theWorld.updateEntityWithOptionalForce(minecraft.thePlayer, false);
-        }
-        AetherWorld tfworld = null;
-        tfworld = new AetherWorld(minecraft.theWorld, new AetherWorldProvider());
-        minecraft.changeWorld(tfworld, "Vous entrez dans la MomoDimension", minecraft.thePlayer);
-        minecraft.thePlayer.worldObj = minecraft.theWorld;
-        minecraft.thePlayer.dimension = 7;
-    }
-
-    public void sendToSurface(Minecraft minecraft)
-    {
-        minecraft.theWorld.setEntityDead(minecraft.thePlayer);
-        minecraft.thePlayer.isDead = false;
-        double d = minecraft.thePlayer.posY;
-        if(minecraft.thePlayer.dimension == 0)
-        {
-            d *= 2D;
-        }
-        minecraft.thePlayer.setLocationAndAngles(minecraft.thePlayer.posX, d, minecraft.thePlayer.posZ, minecraft.thePlayer.rotationYaw, minecraft.thePlayer.rotationPitch);
-        if(minecraft.thePlayer.isEntityAlive())
-        {
-            minecraft.theWorld.updateEntityWithOptionalForce(minecraft.thePlayer, false);
-        }
-        World world = null;
-        world = new World(minecraft.theWorld, WorldProvider.getProviderForDimension(0));
-        minecraft.changeWorld(world, "Vous quittez la MomoDimension", minecraft.thePlayer);
-        minecraft.thePlayer.worldObj = minecraft.theWorld;
-        minecraft.thePlayer.dimension = 0;
-    }
-
-    public void addTileEntityMapping(Class class1, String s)
-    {
-        Map map = null;
-        Map map1 = null;
-        try
-        {
-            map = (Map)ModLoader.getPrivateValue(net.minecraft.src.TileEntity.class, new TileEntity(), 0);
-            map1 = (Map)ModLoader.getPrivateValue(net.minecraft.src.TileEntity.class, new TileEntity(), 1);
-        }
-        catch(IllegalArgumentException illegalargumentexception)
-        {
-            illegalargumentexception.printStackTrace();
-        }
-        catch(NoSuchFieldException nosuchfieldexception)
-        {
-            nosuchfieldexception.printStackTrace();
-        }
-        if(map1.containsKey(s))
-        {
-            throw new IllegalArgumentException((new StringBuilder()).append("Duplicate id: ").append(s).toString());
-        } else
-        {
-            map.put(s, class1);
-            map1.put(class1, s);
-            return;
-        }
-    }
-
-    public void addTileEntityRendererMapping(Class class1, TileEntitySpecialRenderer tileentityspecialrenderer)
-    {
-        Map map = null;
-        try
-        {
-            map = (Map)ModLoader.getPrivateValue(net.minecraft.src.TileEntityRenderer.class, TileEntityRenderer.instance, 0);
-        }
-        catch(IllegalArgumentException illegalargumentexception)
-        {
-            illegalargumentexception.printStackTrace();
-        }
-        catch(NoSuchFieldException nosuchfieldexception)
-        {
-            nosuchfieldexception.printStackTrace();
-        }
-        map.put(class1, tileentityspecialrenderer);
-        tileentityspecialrenderer.setTileEntityRenderer(TileEntityRenderer.instance);
-    }
-
-    public static void addToAxeEffectiveList(Block block)
-    {
-        Block ablock[] = null;
-        int i = -1;
-        try
-        {
-            int j = 0;
-            do
-            {
-                if(j >= (net.minecraft.src.ItemTool.class).getDeclaredFields().length)
-                {
-                    break;
-                }
-                if(ModLoader.getPrivateValue(net.minecraft.src.ItemTool.class, Item.axeSteel, j) instanceof Block[])
-                {
-                    i = j;
-                    break;
-                }
-                j++;
-            } while(true);
-            if(i > -1)
-            {
-                ablock = (Block[])ModLoader.getPrivateValue(net.minecraft.src.ItemTool.class, Item.axeSteel, i);
-            } else
-            {
-                System.out.println("Could not locate the array of blocks the axe is effective against.  Thus, not changing it.");
-                return;
-            }
-        }
-        catch(IllegalArgumentException illegalargumentexception)
-        {
-            illegalargumentexception.printStackTrace();
-        }
-        catch(NoSuchFieldException nosuchfieldexception)
-        {
-            nosuchfieldexception.printStackTrace();
-        }
-        Block ablock1[] = new Block[ablock.length + 1];
-        System.arraycopy(ablock, 0, ablock1, 0, ablock.length);
-        ablock1[ablock.length] = block;
-        try
-        {
-            for(int k = 0; k < Item.itemsList.length; k++)
-            {
-                if(Item.itemsList[k] instanceof ItemAxe)
-                {
-                    ModLoader.setPrivateValue(net.minecraft.src.ItemTool.class, Item.itemsList[k], i, ablock1);
-                }
-            }
-
-        }
-        catch(IllegalArgumentException illegalargumentexception1)
-        {
-            illegalargumentexception1.printStackTrace();
-        }
-        catch(SecurityException securityexception)
-        {
-            securityexception.printStackTrace();
-        }
-        catch(NoSuchFieldException nosuchfieldexception1)
-        {
-            nosuchfieldexception1.printStackTrace();
-        }
-    }
-
-    public static void addToFireBurnRate(int i, int j, int k)
-    {
-        int ai[] = null;
-        int ai1[] = null;
-        try
-        {
-            ai = (int[])ModLoader.getPrivateValue(net.minecraft.src.BlockFire.class, Block.fire, 0);
-            ai1 = (int[])ModLoader.getPrivateValue(net.minecraft.src.BlockFire.class, Block.fire, 1);
-        }
-        catch(IllegalArgumentException illegalargumentexception)
-        {
-            illegalargumentexception.printStackTrace();
-        }
-        catch(NoSuchFieldException nosuchfieldexception)
-        {
-            nosuchfieldexception.printStackTrace();
-        }
-        ai[i] = j;
-        ai1[i] = k;
-    }
-
-    public static void addToFireBurnRate(int i, int j)
-    {
-        try
-        {
-            for(int k = 0; k < (net.minecraft.src.BlockFire.class).getDeclaredFields().length; k++)
-            {
-                Object obj = ModLoader.getPrivateValue(net.minecraft.src.BlockFire.class, Block.fire, k);
-                if((obj instanceof int[]) && ((int[])obj).length == 256)
-                {
-                    int ai[] = (int[])obj;
-                    ai[i] = ai[j];
-                }
-            }
-
-        }
-        catch(IllegalArgumentException illegalargumentexception)
-        {
-            illegalargumentexception.printStackTrace();
-        }
-        catch(NoSuchFieldException nosuchfieldexception)
-        {
-            nosuchfieldexception.printStackTrace();
-        }
-    }
-
-	
 	//Fonctions exotiques
 	
 	public static boolean equippedSkyrootShovel(){
 		ItemStack itemstack = ModLoader.getMinecraftInstance().thePlayer.inventory.getCurrentItem();
-		return itemstack != null && itemstack.itemID == MomocraftItems.ItemAetherShovelSkyroot.shiftedIndex;
+		return itemstack != null && itemstack.itemID == MMC_Item.ItemAetherShovelSkyroot.shiftedIndex;
 		}
 			
 	public static boolean equippedSkyrootAxe(){
 		ItemStack itemstack = ModLoader.getMinecraftInstance().thePlayer.inventory.getCurrentItem();
-		return itemstack != null && itemstack.itemID == MomocraftItems.ItemAetherAxeSkyroot.shiftedIndex;
+		return itemstack != null && itemstack.itemID == MMC_Item.ItemAetherAxeSkyroot.shiftedIndex;
 		}	
 	
     public static boolean equippedSkyrootPick(){
         ItemStack itemstack = ModLoader.getMinecraftInstance().thePlayer.inventory.getCurrentItem();
-        return itemstack != null && itemstack.itemID == MomocraftItems.ItemAetherPickSkyroot.shiftedIndex;
+        return itemstack != null && itemstack.itemID == MMC_Item.ItemAetherPickSkyroot.shiftedIndex;
     	}	
     
     
     public static void giveAchievement(Achievement blueCloud,
 			EntityPlayer entity) {
-		// TODO Auto-generated method stub
-		
-    	
+		    	
 	}
+    
+    //Méthode pour les plaques
+    public static int IndexClothTexture(int i)
+    {
+        i = ~(i & 0xf);
+        return 113 + ((i & 8) >> 3) + (i & 7) * 16;
+    }
+
+    public static int Inverse(int i)
+    {
+        switch(i)
+        {
+        case 0: // '\0'
+            return 1;
+
+        case 1: // '\001'
+            return 0;
+
+        case 2: // '\002'
+            return 3;
+
+        case 3: // '\003'
+            return 2;
+
+        case 4: // '\004'
+            return 5;
+
+        case 5: // '\005'
+            return 4;
+        }
+        return -1;
+    }
+    
+    
+    //Attribution de la version
 	@Override
 	public String getVersion() {
 		// TODO Auto-generated method stub
 		return "1.0.0";
 	}
 
-	
+	//Méthode de chargement
 	@Override
 	public void load() {
 		// TODO Auto-generated method stub
